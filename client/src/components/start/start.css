@@ -1,0 +1,169 @@
+@font-face {
+    font-family: Syne;
+    src: url("Fuentes/Syne.ttf")
+}
+
+@keyframes appear {
+    0% {
+        visibility: hidden;
+    }
+
+    70% {
+        visibility: hidden;
+    }
+
+    100% {
+        visibility: visible;
+    }
+}
+
+@keyframes iteran {
+    0% {
+        color: rgba(255, 255, 255, 0);
+    }
+
+    10% {
+        color: rgba(255, 255, 255, 0.178);
+    }
+
+    20% {
+        color: rgba(255, 255, 255, 0.37);
+    }
+
+    30% {
+        color: rgba(255, 255, 255, 0.521);
+    }
+
+    40% {
+        color: rgba(255, 255, 255, 0.699);
+    }
+
+    50% {
+        color: white;
+    }
+
+    60% {
+        color: rgba(255, 255, 255, 0.699);
+    }
+
+    70% {
+        color: rgba(255, 255, 255, 0.521);
+    }
+
+    80% {
+        color: rgba(255, 255, 255, 0.37);
+    }
+
+    90% {
+        color: rgba(255, 255, 255, 0.178);
+    }
+
+    100% {
+        color: rgba(255, 255, 255, 0);
+    }
+}
+
+.start {
+    font-size: 3em;
+    font-family: Syne;
+    background: none;
+    color: white;
+    font-weight: 800;
+    border: 2px solid transparent;
+    cursor: pointer;
+    animation: appear 2s linear, iteran 1.8s linear infinite;
+    transition: all .5s;
+}
+
+.start:hover {
+    box-shadow: 0 8px .5px white;
+    animation: appear 2s linear;
+}
+
+@keyframes efect {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.F1 {
+    filter: drop-shadow(25px 55px 25px black);
+    animation: efect 1.2s linear;
+    cursor: default;
+    transition: transform .7s;
+}
+
+.F1:hover {
+    transform: scale(1.05);
+}
+
+.contain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    position: absolute;
+    top: -6em;
+    right: 0em;
+    width: 84px;
+    height: 84px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: rotate(45deg);
+    overflow: hidden;
+}
+
+.loader:after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    margin: auto;
+    background: #222b32;
+}
+
+.loader:before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    margin: auto;
+    background: #de3500;
+    animation: diamondLoader 2s linear infinite;
+}
+
+@keyframes diamondLoader {
+    0%, 10% {
+        transform: translate(-64px, -64px) rotate(-45deg)
+    }
+
+    90%, 100% {
+        transform: translate(0px, 0px) rotate(-45deg)
+    }
+}
+
+.cargando {
+    overflow: hidden;
+    font-size: 1em;
+    font-weight: 500;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 3.1s steps(40, end) infinite ;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
