@@ -1,0 +1,17 @@
+.driver-custom{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "principal principal"
+      "crear borrar"
+      "outlet outlet";
+}
+
+.crear { grid-area: crear; }
+.borrar { grid-area: borrar; }
+.principal { grid-area: principal; }
+.outlet { grid-area: outlet;
+    margin-top: 2em;
+}

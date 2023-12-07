@@ -1,4 +1,3 @@
-
 const DeleteDV = () => {
   return (
     <div>
@@ -7,4 +6,4 @@ const DeleteDV = () => {
   )
 }
 
-export default DeleteDV
+export default DeleteDV;

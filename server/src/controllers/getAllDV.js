@@ -5,9 +5,10 @@ const getAllDV = async (req, res) => {
   try {
     const { data } = await axios("http://localhost:5000/drivers");
     for (const dataDriv of data) {
-      const { name, image, description, dob, nationality, teams } = dataDriv;
+      const {id, name, image, description, dob, nationality, teams } = dataDriv;
       await Driver.findOrCreate({
         where: {
+          code: id,
           name: name.forename,
           lastname: name.surname,
           image: image.url ? image.url : "https://soymotor.com/sites/default/files/imagenes/noticia/palou-indycar-soymotor_1.jpg",

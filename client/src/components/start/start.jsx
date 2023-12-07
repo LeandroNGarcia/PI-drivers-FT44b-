@@ -15,7 +15,7 @@ const Start = ({ handleBackChange }) => {
     setTimeout(() => {
       setLoading(false);
       navigate("/home");
-    }, 60000);
+    }, 5000);
   };
 
   useEffect(()=>{

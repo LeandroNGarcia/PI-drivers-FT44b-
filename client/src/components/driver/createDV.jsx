@@ -1,4 +1,3 @@
-
 const CreateDV = () => {
   return (
     <div>
@@ -7,4 +6,4 @@ const CreateDV = () => {
   )
 }
 
-export default CreateDV
+export default CreateDV;

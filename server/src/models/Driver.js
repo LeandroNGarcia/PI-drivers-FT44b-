@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
+      code:{
+        type: DataTypes.INTEGER,
+        allowNull:false
+      },
       name: {
         type: DataTypes.TEXT,
         allowNull: false,

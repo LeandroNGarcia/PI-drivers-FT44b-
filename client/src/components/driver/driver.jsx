@@ -1,16 +1,22 @@
-import { Outlet, Link } from "react-router-dom"
+/* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom"
 
-const Driver = () => {
+const Driver = ({ corredor }) => {
+    const { code, name, lastname, nationality, birthday } = corredor;
+    const navigate = useNavigate()
   return (
-    <div>
-      <p>¿Qué desea hacer?</p>
-      <nav>
-        <ul>
-          <li><Link to="/driver/add">Crear</Link></li>
-          <li><Link to="/driver/delete">Eliminar</Link></li>
-        </ul>
-      </nav>
-      <Outlet />
+    <div style={{
+        backgroundColor:"gray",
+        border:"2px solid black",
+        width:"15em"
+    }}>
+      <h2>{lastname}</h2>
+      <h3 style={{
+        cursor:"pointer"
+      }} onClick={()=> navigate(`/driver/${code}`)} >{name}</h3>
+      <h4>{nationality}</h4>
+      <h4>{birthday}</h4>
+      <br />
     </div>
   )
 }
