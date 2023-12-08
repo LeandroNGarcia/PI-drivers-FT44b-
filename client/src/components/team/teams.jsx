@@ -8,7 +8,7 @@ const Teams = ({ team }) => {
   return (
     <div className="Cards" >
       {team.map((equipo) => (
-        <Team key={equipo.name} equipo={equipo} />
+        <Team key={equipo.id} equipo={equipo} />
       ))}
     </div>
   )

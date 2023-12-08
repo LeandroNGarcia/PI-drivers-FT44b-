@@ -15,19 +15,19 @@ const Start = ({ handleBackChange }) => {
     setTimeout(() => {
       setLoading(false);
       navigate("/home");
-    }, 5000);
+    }, 6000);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     handleBackChange("https://wallpaperaccess.com/full/4005756.jpg")
-  },[handleBackChange])
+  }, [handleBackChange])
 
   return (
     <div className="contain">
       {loading ? (
-          <div>
-            <Loading handleBackChange={handleBackChange} />
-          </div>
+        <div>
+          <Loading handleBackChange={handleBackChange} />
+        </div>
       ) : (
         <div>
           <img src="https://1000marcas.net/wp-content/uploads/2020/01/logo-F1.png" alt="F1" width={750} className="F1" />

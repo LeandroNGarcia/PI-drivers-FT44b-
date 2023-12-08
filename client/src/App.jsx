@@ -43,27 +43,12 @@ function App() {
   const onSearch = async (param) => {
     try {
       const { data } = await axios(
-        `http://localhost:3001/driver?name=${param}`
+        `http://localhost:3001/driver?nameq=${param}`
       );
       setDriver(data);
     } catch (error) {
       alert(error);
     }
-
-    // const isnumber = Number(param);
-    // const result = isNaN(isnumber);
-    // if (result) {
-    //   const { data } = await axios(
-    //     `http://localhost:3001/driver?name=${param}`
-    //   );
-    //   setDriver(data);
-    //   console.log(driver);
-    // }
-    // if (!result) {
-    //   const { data } = await axios(`http://localhost:3001/driver/${param}`);
-    //   setDriver([data]);
-    //   console.log([data]);
-    // }
   };
 
   //?Pequeño manejo de estados para controlar el componente que se debe renderizar
@@ -89,7 +74,7 @@ function App() {
   //*Funcion que busca a los equipos por nombre
   const onSearchT = async (param) => {
     try {
-      const { data } = await axios(`http://localhost:3001/teams/${param}`);
+      const { data } = await axios(`http://localhost:3001/team/?nameq=${param}`);
       setTeam(data);
     } catch (error) {
       alert(error.message);
@@ -99,7 +84,7 @@ function App() {
   return (
     <div style={{ backgroundImage }} className="App">
       {pathname !== "/" && (
-        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT} />
+        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT}                 handleDrivers={handleDrivers} handleTeams={handleTeams} />
       )}
       <Routes>
         <Route
@@ -111,7 +96,6 @@ function App() {
           element={
             local === true ? (
               <Drivers
-                handleDrivers={handleDrivers}
                 handleBackChange={handleBackChange}
                 driver={driver}
               />

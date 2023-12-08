@@ -21,10 +21,11 @@ const Detail = ({ navigate }) => {
 
   },[id])
 
-  const { name, lastname, birthday, nationality, description, teams } = driver
+  const { name, lastname, birthday, nationality, description, teams, image } = driver
 
   return (
     <div>
+      <img src={image} alt="Foto" width={200} />
       <h1>{lastname}</h1>
       <h2>{name}</h2>
       <h4>{birthday}</h4>
