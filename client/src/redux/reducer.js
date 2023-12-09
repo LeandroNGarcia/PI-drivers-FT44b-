@@ -1,9 +1,8 @@
-import { ORDER_FILTER } from './actionTypes';
+import { ORDER_FILTER } from './actions/actionsTypes';
 
 const initialState = {
   drivers: [],
-  orderBy: null,
-  orderDirection: null,
+  error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,21 +10,9 @@ const reducer = (state = initialState, action) => {
     case ORDER_FILTER:
       return {
         ...state,
-        orderBy: action.payload.orderBy,
-        orderDirection: action.payload.orderDirection,
+        drivers: action.payload.drivers,
+        error: action.payload.error,
       };
-      case 'FETCH_DRIVERS_SUCCESS':
-        return {
-          ...state,
-          drivers: action.payload,
-        };
-
-      case 'FETCH_DRIVERS_FAILURE':
-        return {
-          ...state,
-          error: action.payload,
-        };
-
     default:
       return state;
   }

@@ -43,7 +43,7 @@ function App() {
   const onSearch = async (param) => {
     try {
       const { data } = await axios(
-        `http://localhost:3001/driver?nameq=${param}`
+        `http://localhost:3001/driver?name=${param}`
       );
       setDriver(data);
     } catch (error) {
@@ -74,7 +74,7 @@ function App() {
   //*Funcion que busca a los equipos por nombre
   const onSearchT = async (param) => {
     try {
-      const { data } = await axios(`http://localhost:3001/team/?nameq=${param}`);
+      const { data } = await axios(`http://localhost:3001/team/?name=${param}`);
       setTeam(data);
     } catch (error) {
       alert(error.message);

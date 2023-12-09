@@ -1,31 +1,59 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Driver from "./driver"
+import { useDispatch, useSelector } from 'react-redux';
+import { orderFilter } from "../../redux/actions/actions";
+import { useState } from "react";
 
 const Drivers = ({ driver }) => {
+
+  const [isAll, setIsAll] = useState(true)
+  const handleState = (param) => {
+    setIsAll(param)
+  }
+
+  const dispatch = useDispatch();
+  const drivers = useSelector((state) => state.drivers);
+
+  const handleFilterChange = (e) => {
+    const { value } = e.target;
+    const [orderBy, orderDirection] = value.split(",");
+    dispatch(orderFilter(orderBy, orderDirection));
+  };
 
   // useEffect(()=>{
   //   handleBackChange("https://youtu.be/Q9qSwDxF6YI?t=7")
   // })
 
   return (
-    <div style={{position:"relative"}}>
+    <div style={{ position: "relative" }}>
       <div className="filter">
-        <select name="Filtro" id="">
-          <option value="birthday">Birthday</option>
-          <option value="lastname">Lastname</option>
-          <option value="nationality">Nationality</option>
-        </select>
-        <select name="Orden" id="">
-          <option value="ascendente">Ascendente</option>
-          <option value="descendente">Descendente</option>
+        <button onClick={()=> handleState(true)}>All</button>
+        <select name="Filtro" onChangeCapture={()=> handleState(false)} onChange={handleFilterChange} defaultValue="opciones">
+          <option value="opciones" disabled="disable">Opciones</option>
+          <option value="birthday,asc">Birthday(A)</option>
+          <option value="birthday,desc">Birthday(D)</option>
+          <option value="lastname,asc">Lastname(A)</option>
+          <option value="lastname,desc">Lastname(B)</option>
+          <option value="name,asc">Name(A)</option>
+          <option value="name,desc">Name(B)</option>
+          <option value="nationality,asc">Nationality(A)</option>
+          <option value="nationality,desc">Nationality(B)</option>
         </select>
       </div>
-      <div className="Cards" >
-        {driver.map((corredor) => (
-          <Driver key={corredor.id} corredor={corredor} />
-        ))}
-      </div>
+      {isAll === true ?
+        <div className="Cards" >
+          {driver.map((corredor) => (
+            <Driver key={corredor.id} corredor={corredor} />
+          ))}
+        </div>
+        :
+        <div className="Cards">
+          {drivers.map((corredor) => (
+            <Driver key={corredor.id} corredor={corredor} />
+          ))}
+        </div>
+        }
     </div>
   )
 }
