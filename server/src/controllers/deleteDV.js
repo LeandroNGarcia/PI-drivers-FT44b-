@@ -6,9 +6,8 @@ const deleteDV = async(req,res) => {
         const driverToDelete = await Driver.findByPk(id);
 
         if (!driverToDelete) {
-            return res.status(404).json({ error: 'Driver not found' });
+            throw new Error("Driver not found")
         }
-
         await driverToDelete.destroy();
         res.status(200).json({message:"Corredor eliminado exitosamente"});
     } catch (error) {

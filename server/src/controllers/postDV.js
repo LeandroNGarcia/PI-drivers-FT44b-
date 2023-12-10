@@ -1,4 +1,4 @@
-const { Driver, Team } = require("../db");
+const { Driver } = require("../db");
 
 const postDV = async (req, res) => {
   try {
@@ -12,22 +12,12 @@ const postDV = async (req, res) => {
         nationality,
         image: image ? image : "https://soymotor.com/sites/default/files/imagenes/noticia/palou-indycar-soymotor_1.jpg",
         description: description ? description : "",
+        teams
       },
     });
-    if (teams) {
-      const teamNames = teams.split(",").map((team) => team.trim());
-
-      for (const teamName of teamNames) {
-        await Team.findOrCreate({
-          where: {
-            name: teamName,
-          },
-        });
-      }
-    }
-    res.status(201).send("Corredor añadido exitosamente")
+    res.status(201).json({aprovation: true})
   } catch (error) {
-    console.log(error);
+    res.status(400).send(error.message)
   }
 };
 

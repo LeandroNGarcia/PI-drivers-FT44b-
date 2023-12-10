@@ -35,6 +35,9 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
+      teams: {
+        type: DataTypes.STRING
+      }
     },
     {
       timestamps: false

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { deleteDV } = require("../controllers/deleteDV");
 const { postDV } = require("../controllers/postDV");
-const { getTeamsByName } = require("../controllers/getTeamsByName");
+const { Driver } = require("../db")
 const controller = require("../controllers/controller");
 const tcontroller = require("../controllers/tcontroller");
 
@@ -16,10 +16,10 @@ router.get("/drivers", (req, res) => {
   }
 });
 
-router.get("/driver/:id", (req, res) => {
+router.get("/driver/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const driver = controller.byId(id);
+    const driver = await controller.byId(id);
     res.status(200).json(driver);
   } catch (error) {
     res.status(400).send(error.message);
@@ -65,8 +65,6 @@ router.get("/teams", (req, res) => {
   }
 });
 
-// router.get("/team/", getTeamsByName);
-
 router.get("/team/", (req, res) => {
   try {
     const { name } = req.query;
@@ -78,6 +76,16 @@ router.get("/team/", (req, res) => {
 });
 
 router.post("/drivers", postDV);
+
+router.get("/drivers-custom", async (req, res) => {
+  try {
+    const drivers = await Driver.findAll()
+    res.status(200).json(drivers)
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
+
 router.delete("/drivers/:id", deleteDV);
 
 module.exports = router;

@@ -81,6 +81,32 @@ function App() {
     }
   };
 
+  //?Control de formulario
+  const postDriver = async (driverData) => {
+    try {
+      const { name, lastname, birthday, nationality, teams } = driverData
+      const { data } = await axios.post("http://localhost:3001/drivers", {name,lastname,birthday,nationality,teams})
+      if(data.aprovation){
+        navigate("/driver-custom")
+      }
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  //?Manejo para corredores agregados
+  const [customDriver, setCustomDriver] = useState([]);
+
+  //*Funcion para llamar a todos los corredores
+  const handleCustomDriver = async () => {
+    try {
+      const { data } = await axios("http://localhost:3001/drivers-custom")
+      setCustomDriver([...data])
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <div style={{ backgroundImage }} className="App">
       {pathname !== "/" && (
@@ -111,8 +137,8 @@ function App() {
         <Route path="/driver/:id" element={<Detail navigate={navigate} />} />
         <Route
           path="/driver-custom"
-          element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>
-          <Route path="add" element={<CreateDV />} />
+          element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} customDriver={customDriver} handleCustomDriver={handleCustomDriver} />}>
+          <Route path="add" element={<CreateDV postDriver={postDriver} />} />
           <Route path="delete" element={<DeleteDV />} />
         </Route>
         <Route path="*" element={<Err404 />} />

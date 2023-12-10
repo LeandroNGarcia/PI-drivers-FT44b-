@@ -1,4 +1,5 @@
 const data = require("../../api/db.json");
+const { Driver } = require("../db")
 
 let drivers = [];
 
@@ -17,10 +18,26 @@ drivers = data.drivers.map((d) => ({
 
 const allDV = () => drivers;
 
-const byId = (id) => {
+const byId = async (id) => {
+try {
   const idN = Number(id);
+
+  // Buscar en el array local
   const driver = drivers.find((d) => d.id === idN);
-  return driver;
+
+  // Si se encuentra en el array local, devolverlo
+  if (driver) {
+    return driver;
+  }
+
+  // Si no se encuentra en el array local, buscar en la base de datos
+  const driverFromDB = await Driver.findByPk(id);
+
+  // Devolver el resultado de la base de datos
+  return driverFromDB;
+} catch (error) {
+  return error
+}
 };
 
 const byName = (name) => {
