@@ -7,9 +7,11 @@ const Teams = ({ team }) => {
 
   return (
     <div className="Cards" >
-      {team.map((equipo) => (
+      {team.length ?
+      team.map((equipo) => (
         <Team key={equipo.id} equipo={equipo} />
-      ))}
+      )):
+      <span>No hay escuderias con ese nombre</span>}
     </div>
   )
 }

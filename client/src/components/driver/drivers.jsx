@@ -3,14 +3,17 @@
 import Driver from "./driver"
 import { useDispatch, useSelector } from 'react-redux';
 import { orderFilter } from "../../redux/actions/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Drivers = ({ driver }) => {
+const Drivers = ({ driver, handleDrivers }) => {
 
   const [isAll, setIsAll] = useState(true)
   const handleState = (param) => {
     setIsAll(param)
   }
+  useEffect(()=>{
+    handleDrivers()
+  },[])
 
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
@@ -43,9 +46,11 @@ const Drivers = ({ driver }) => {
       </div>
       {isAll === true ?
         <div className="Cards" >
-          {driver.map((corredor) => (
+          {driver.length ?
+          driver.map((corredor) => (
             <Driver key={corredor.id} corredor={corredor} />
-          ))}
+          )):
+          <span>No hay conductores con ese nombre</span>}
         </div>
         :
         <div className="Cards">

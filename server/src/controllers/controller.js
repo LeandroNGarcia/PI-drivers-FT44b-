@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const data = require("../../api/db.json");
 const { Driver } = require("../db")
 
@@ -16,7 +17,15 @@ drivers = data.drivers.map((d) => ({
   teams: d.teams,
 }));
 
-const allDV = () => drivers;
+const allDV = async () => {
+  const driverDB = await Driver.findAll();
+
+  if(driverDB){
+    const AllDv = driverDB.concat(drivers)
+    return AllDv
+  }
+  return drivers
+};
 
 const byId = async (id) => {
 try {
@@ -40,26 +49,55 @@ try {
 }
 };
 
-const byName = (name) => {
+const byName = async (name) => {
   const driver = drivers.filter((a) =>
     a.name.toLowerCase().startsWith(name.toLowerCase())
   );
-  return driver;
-};
-
-const filters = (orderBy, orderDirection) => {
-  const sortedDrivers = [...drivers].sort((a, b) => {
-    if (orderDirection === "asc") {
-      return a[orderBy].localeCompare(b[orderBy], {
-        sensitivity: "base",
-      });
-    } else {
-      return b[orderBy].localeCompare(a[orderBy], {
-        sensitivity: "base",
-      });
+  const driverDB = await Driver.findAll({
+    where:{
+      name:{
+        [Op.iLike]:`${name}%`
+      }
     }
   });
-  return sortedDrivers;
+
+  if(driverDB){
+    const AllDv = driverDB.concat(driver)
+    return AllDv
+  }
+  return driver
+};
+
+const filters = async (orderBy, orderDirection) => {
+  const dbDrivers = await Driver.findAll()
+  if(dbDrivers){
+    const allDV = drivers.concat(dbDrivers);
+    const sortedDrivers = [...allDV].sort((a, b) => {
+      if (orderDirection === "asc") {
+        return a[orderBy].localeCompare(b[orderBy], {
+          sensitivity: "base",
+        });
+      } else {
+        return b[orderBy].localeCompare(a[orderBy], {
+          sensitivity: "base",
+        });
+      }
+    });
+    return sortedDrivers;
+  } else {
+    const sortedDrivers = [...drivers].sort((a, b) => {
+      if (orderDirection === "asc") {
+        return a[orderBy].localeCompare(b[orderBy], {
+          sensitivity: "base",
+        });
+      } else {
+        return b[orderBy].localeCompare(a[orderBy], {
+          sensitivity: "base",
+        });
+      }
+    });
+    return sortedDrivers;
+  }
 };
 
 module.exports = {

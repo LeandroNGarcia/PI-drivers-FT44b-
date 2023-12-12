@@ -11,6 +11,7 @@ import { useState } from "react";
 import Drivers from "./components/driver/drivers";
 import Nav from "./components/nav/nav";
 import Teams from "./components/team/teams";
+import DetailCustom from "./components/detail/detailCustom";
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
 
   //?Manejo de los llamados para los equipos
   const [team, setTeam] = useState([]);
+  console.log(team);
 
   //*Funcion que llama a todos los equipos
   const handleTeams = async () => {
@@ -101,7 +103,7 @@ function App() {
   const handleCustomDriver = async () => {
     try {
       const { data } = await axios("http://localhost:3001/drivers-custom")
-      setCustomDriver([...data])
+      setCustomDriver(data)
     } catch (error) {
       alert(error)
     }
@@ -124,6 +126,7 @@ function App() {
               <Drivers
                 handleBackChange={handleBackChange}
                 driver={driver}
+                handleDrivers={handleDrivers}
               />
             ) : (
               <Teams
@@ -135,11 +138,12 @@ function App() {
           }
         />
         <Route path="/driver/:id" element={<Detail navigate={navigate} />} />
+        <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} />} />
         <Route
           path="/driver-custom"
-          element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} customDriver={customDriver} handleCustomDriver={handleCustomDriver} />}>
+          element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>
           <Route path="add" element={<CreateDV postDriver={postDriver} />} />
-          <Route path="delete" element={<DeleteDV />} />
+          <Route path="delete" element={<DeleteDV customDriver={customDriver} handleCustomDriver={handleCustomDriver} />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>

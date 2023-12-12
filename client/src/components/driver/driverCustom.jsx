@@ -1,15 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
 import "./driverCustom.css";
-import Driver from "./driver";
 
-const DriverCustom = ({ navigate, customDriver, handleCustomDriver }) => {
-
-  useEffect(()=>{
-    handleCustomDriver()
-  },[])
+const DriverCustom = ({ navigate }) => {
 
   return (
     <div className="driver-custom">
@@ -26,11 +20,6 @@ const DriverCustom = ({ navigate, customDriver, handleCustomDriver }) => {
       </div>
       <div className="outlet">
         <Outlet />
-      </div>
-      <div className="Customs">
-        {customDriver.map((corredor) =>(
-          <Driver key={corredor.id} corredor={corredor}/>
-        ))}
       </div>
     </div>
   );

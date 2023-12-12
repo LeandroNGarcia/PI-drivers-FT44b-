@@ -32,7 +32,7 @@ const DetailCustom = ({ navigate }) => {
       <h4>{nationality}</h4>
       <h4>{teams}</h4>
       <h4>{description}</h4>
-      <button onClick={()=> navigate("/home")} >Volver Atras</button>
+      <button onClick={()=> navigate("/driver-custom/delete")} >Volver Atras</button>
     </div>
   )
 }
