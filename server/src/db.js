@@ -21,17 +21,18 @@ fs.readdirSync(path.join(__dirname, '/models'))
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
-
 modelDefiners.forEach(model => model(sequelize));
 
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
+
 const { Driver, Team } = sequelize.models;
 
-Driver.belongsToMany(Team, { through: "driver_team", timestamps:false  })
-Team.belongsToMany(Driver, { through: "driver_team", timestamps:false  })
+
+
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

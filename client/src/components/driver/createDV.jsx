@@ -1,21 +1,40 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as valid from "./validation"
 
 const CreateDV = ({ postDriver }) => {
+  const [equipo, setEquipo] = useState([])
+
+  useEffect(()=>{
+    const cargarEquipos = async ()=>{
+      try {
+        const response = await fetch("http://localhost:3001/teams");
+        const data = await response.json();
+        setEquipo(data)
+      } catch (error) {
+        alert("No se pueden cargar los equipos", error)
+      }
+    };
+    cargarEquipos();
+  },[])
+
   const [error, setError] = useState({});
   const [driverData, setDriverData] = useState({
     name: "",
     lastname: "",
     birthday: "",
     nationality: "",
-    teams: "",
+    teams: ""
   });
+
+  console.log(driverData);
   const handleValid = (e) => {
+    const { name, value } = e.target;
     setDriverData({
       ...driverData,
-      [e.target.name]: e.target.value
+      [name]: value,
     });
+
     if (e.target.name === "name") {
       setError({
         ...error,
@@ -40,12 +59,6 @@ const CreateDV = ({ postDriver }) => {
         nationality: valid.isNationality(e.target.value)
       })
     }
-      if (e.target.name === "teams") {
-        setError({
-          ...error,
-          teams: valid.isTeam(e.target.value)
-        })
-      }
     }
 
     const handleSubmit = (e) => {
@@ -55,7 +68,7 @@ const CreateDV = ({ postDriver }) => {
       }
       if (!error.name || !error.lastname || !error.birthday || !error.nationality || !error.teams) {
         postDriver(driverData)
-        return alert("Personaje creado exitosamente")
+        return alert("Corredor dado de alta")
       }
       return alert("Corrige los errores")
     }
@@ -64,6 +77,7 @@ const CreateDV = ({ postDriver }) => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
+          <h1>¿Que corredor deseas dar de alta?</h1>
           <label htmlFor="name">Name:</label>
           <br />
           <input type="text" name="name" onChange={handleValid} placeholder="Nombre" className={error.name ? "inputError" : ""} />
@@ -90,15 +104,29 @@ const CreateDV = ({ postDriver }) => {
           <br />
           <label htmlFor="teams">Teams:</label>
           <br />
-          <input type="text" name="teams" onChange={handleValid} placeholder="Nombre de escuderia" className={error.teams ? "inputError" : ""} />
+          <div style={{
+            display:"flex",
+            justifyContent:"center",
+            padding:"5px",
+            gap:"5px"
+          }}>
+          <select onChange={handleValid}  name="teams" id="equipo" defaultValue="option" >
+            <option value="option" disabled>Option 1</option>
+            {equipo.map((team) => (
+              <option key={team.id} value={team.name}>
+                {team.name}
+              </option>
+            ))}
+          </select>
+          </div>
           <br />
           <span className="errSpan">{error.teams}</span>
           <br />
           <br />
-          <button type="submit">Crear Corredor</button>
+          <button type="submit">Dar de alta a Corredor</button>
         </form>
       </div>
     )
   }
 
-export default CreateDV;
+  export default CreateDV;

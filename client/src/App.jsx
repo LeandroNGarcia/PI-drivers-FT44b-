@@ -92,7 +92,7 @@ function App() {
         navigate("/driver-custom")
       }
     } catch (error) {
-      alert(error.message)
+      alert(error.data)
     }
   }
 

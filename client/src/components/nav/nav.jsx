@@ -15,6 +15,9 @@ const Nav = ({ uselocal, onSearch, onSearchT, navigate, handleDrivers, handleTea
       <button onClick={()=> navigate("/driver-custom")} >
         Custom
       </button>
+      <button onClick={()=> navigate("/")}>
+        <img src="https://cdn-icons-png.flaticon.com/128/1/1228.png" alt="off" width={15} />
+      </button>
     </div>
   )
 }

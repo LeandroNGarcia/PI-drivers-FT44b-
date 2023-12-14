@@ -11,41 +11,42 @@ const Teams = data.drivers.flatMap((driver) => {
 
 const uniqueTeamsSet = new Set(Teams);
 
-const teams = Array.from(uniqueTeamsSet).map((name) => ({
-  // id: index + 1,
+const teams = Array.from(uniqueTeamsSet).map((name, index) => ({
+  id: index + 1,
   name,
 }));
 
-const SubiralaBase = async (teams) => {
-  for (const team of teams) {
-    await Team.findOrCreate({
-      where:{
-        name:team.name
-      }
-    })
-  }
-}
+// // const SubiralaBase = async (teams) => {
+//   for (const equipo of teams) {
+//      Team.findOrCreate({
+//       where:{
+//         name:equipo.name
+//       }
+//     })
+//   }
+// // }
 
-SubiralaBase(teams)
+// // SubiralaBase(teams)
 
 
 const allTeams = async () => {
-  const teams = await Team.findAll();
+  // const teams = await Team.findAll();
   return teams
 };
 
 const teamByName = async (name) => {
-  // const team = teams.filter((a) =>
-  //   a.name.toLowerCase().startsWith(name.toLowerCase())
-  // );
-  const team = await Team.findAll({
-    where:{
-      name:{
-        [Op.iLike]:`${name}%`
-      }
-    }
-  })
-  return team;
+  const team = teams.filter((a) =>
+    a.name.toLowerCase().startsWith(name.toLowerCase())
+  );
+  // const equipo = await Team.findAll({
+  //   where:{
+  //     name:{
+  //       [Op.iLike]:`${name}%`
+  //     }
+  //   }
+  // })
+  // return equipo;
+  return team
 };
 
 module.exports = {

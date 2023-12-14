@@ -3,17 +3,17 @@
 import Driver from "./driver"
 import { useDispatch, useSelector } from 'react-redux';
 import { orderFilter } from "../../redux/actions/actions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const Drivers = ({ driver, handleDrivers }) => {
+const Drivers = ({ driver }) => {
 
   const [isAll, setIsAll] = useState(true)
-  const handleState = (param) => {
-    setIsAll(param)
-  }
-  useEffect(()=>{
-    handleDrivers()
-  },[])
+  const [currentpage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  // useEffect(() => {
+  //   handleDrivers()
+  // }, [])
 
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
@@ -22,7 +22,24 @@ const Drivers = ({ driver, handleDrivers }) => {
     const { value } = e.target;
     const [orderBy, orderDirection] = value.split(",");
     dispatch(orderFilter(orderBy, orderDirection));
+    setCurrentPage(1)
   };
+
+  const handleState = (param) => {
+    setIsAll(param);
+    setCurrentPage(1)
+  };
+
+  const currentDrivers = isAll ? driver : drivers;
+  const indexOfLastItem = currentpage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentDriversToDisplay = currentDrivers.slice(indexOfFirstItem, indexOfLastItem);
+
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil((isAll ? driver.length : drivers.length) / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   // useEffect(()=>{
   //   handleBackChange("https://youtu.be/Q9qSwDxF6YI?t=7")
@@ -31,8 +48,8 @@ const Drivers = ({ driver, handleDrivers }) => {
   return (
     <div style={{ position: "relative" }}>
       <div className="filter">
-        <button onClick={()=> handleState(true)}>All</button>
-        <select name="Filtro" onChangeCapture={()=> handleState(false)} onChange={handleFilterChange} defaultValue="opciones">
+        <button onClick={() => handleState(true)}>All</button>
+        <select name="Filtro" onChangeCapture={() => handleState(false)} onChange={handleFilterChange} defaultValue="opciones">
           <option value="opciones" disabled="disable">Opciones</option>
           <option value="birthday,asc">Birthday(A)</option>
           <option value="birthday,desc">Birthday(D)</option>
@@ -44,21 +61,19 @@ const Drivers = ({ driver, handleDrivers }) => {
           <option value="nationality,desc">Nationality(B)</option>
         </select>
       </div>
-      {isAll === true ?
-        <div className="Cards" >
-          {driver.length ?
-          driver.map((corredor) => (
-            <Driver key={corredor.id} corredor={corredor} />
-          )):
-          <span>No hay conductores con ese nombre</span>}
-        </div>
-        :
-        <div className="Cards">
-          {drivers.map((corredor) => (
-            <Driver key={corredor.id} corredor={corredor} />
-          ))}
-        </div>
-        }
+      <div className="Cards">
+        {driver.length ? currentDriversToDisplay.map((corredor) => (
+          <Driver key={corredor.id} corredor={corredor} />
+        )):
+        <span>No hay corredores con ese nombre</span>}
+      </div>
+      <div className="contain-pages">
+        {pageNumbers.map((number) => (
+          <button className={currentpage === number ? "activePage" : ""} key={number} onClick={() => setCurrentPage(number)}>
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }

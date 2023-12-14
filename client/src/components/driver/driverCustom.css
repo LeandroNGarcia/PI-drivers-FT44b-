@@ -6,7 +6,7 @@
         "principal principal"
         "crear borrar"
         "outlet outlet"
-        "Customs Customs";
+        "outlet outlet";
 }
 
 .crear {
@@ -41,14 +41,4 @@
     outline: none;
     border-color: red;
     border-radius: 3px;
-}
-
-.Customs {
-    grid-area: Customs;
-    padding-top: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 2em;
-    gap: 1em;
-    justify-content: center;
 }
