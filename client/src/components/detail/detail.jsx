@@ -8,10 +8,10 @@ const Detail = ({ navigate }) => {
   const { id } = useParams();
   const [driver, setDriver] = useState({})
 
-  useEffect(()=>{
+  useEffect(() => {
     axios(`http://localhost:3001/driver/${id}`).then(
       ({ data }) => {
-        if(data.name){
+        if (data.name) {
           setDriver(data)
         }
       }
@@ -19,9 +19,9 @@ const Detail = ({ navigate }) => {
 
     return setDriver({})
 
-  },[id])
+  }, [id])
 
-  const { name, lastname, birthday, nationality, description, teams, image } = driver
+  const { name, lastname, birthday, nationality, description, teams, Teams, image } = driver
 
   return (
     <div>
@@ -30,9 +30,18 @@ const Detail = ({ navigate }) => {
       <h2>{name}</h2>
       <h4>{birthday}</h4>
       <h4>{nationality}</h4>
-      <h4>{teams}</h4>
+      {teams ? (
+        <h4>{teams}</h4>
+      ) : (
+        Teams && (
+          <h4>{Teams.map((equipo) => equipo.name).join(", ")}</h4>
+        )
+        // Teams.map((equipo) => (
+        //   <h4 key={equipo.driver_team.TeamId}>{equipo.name}</h4>
+        // ))
+      )}
       <h4>{description}</h4>
-      <button onClick={()=> navigate("/home")} >Volver Atras</button>
+      <button onClick={() => navigate("/home")} >Volver Atras</button>
     </div>
   )
 }

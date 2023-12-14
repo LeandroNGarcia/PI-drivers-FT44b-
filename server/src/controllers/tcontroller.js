@@ -16,36 +16,38 @@ const teams = Array.from(uniqueTeamsSet).map((name, index) => ({
   name,
 }));
 
-// // const SubiralaBase = async (teams) => {
-//   for (const equipo of teams) {
-//      Team.findOrCreate({
-//       where:{
-//         name:equipo.name
-//       }
-//     })
-//   }
-// // }
+const SubiralaBase = async (teams) => {
+  for (const equipo of teams) {
+     Team.findOrCreate({
+      where:{
+        name:equipo.name
+      }
+    })
+  }
+}
 
-// // SubiralaBase(teams)
+SubiralaBase(teams)
 
 
 const allTeams = async () => {
-  // const teams = await Team.findAll();
+  const teams = await Team.findAll({
+    order: [["id", "ASC"]],
+  });
   return teams
 };
 
 const teamByName = async (name) => {
-  const team = teams.filter((a) =>
-    a.name.toLowerCase().startsWith(name.toLowerCase())
-  );
-  // const equipo = await Team.findAll({
-  //   where:{
-  //     name:{
-  //       [Op.iLike]:`${name}%`
-  //     }
-  //   }
-  // })
-  // return equipo;
+  // const team = teams.filter((a) =>
+  //   a.name.toLowerCase().startsWith(name.toLowerCase())
+  // );
+  const team = await Team.findAll({
+    where:{
+      name:{
+        [Op.iLike]:`${name}%`
+      }
+    },
+    order: [["id", "ASC"]],
+  })
   return team
 };
 

@@ -24,7 +24,9 @@ const CreateDV = ({ postDriver }) => {
     lastname: "",
     birthday: "",
     nationality: "",
-    teams: ""
+    team1: "",
+    team2: "",
+    team3: ""
   });
 
   console.log(driverData);
@@ -63,10 +65,10 @@ const CreateDV = ({ postDriver }) => {
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      if (!driverData.name || !driverData.lastname || !driverData.birthday || !driverData.nationality || !driverData.teams) {
+      if (!driverData.name || !driverData.lastname || !driverData.birthday || !driverData.nationality || !driverData.team1) {
         return alert("Complete el formulario")
       }
-      if (!error.name || !error.lastname || !error.birthday || !error.nationality || !error.teams) {
+      if (!error.name || !error.lastname || !error.birthday || !error.nationality) {
         postDriver(driverData)
         return alert("Corredor dado de alta")
       }
@@ -110,8 +112,26 @@ const CreateDV = ({ postDriver }) => {
             padding:"5px",
             gap:"5px"
           }}>
-          <select onChange={handleValid}  name="teams" id="equipo" defaultValue="option" >
+          <select onChange={handleValid}  name="team1" id="equipo" defaultValue="option" >
             <option value="option" disabled>Option 1</option>
+            {equipo.map((team) => (
+              <option key={team.id} value={team.name}>
+                {team.name}
+              </option>
+            ))}
+          </select>
+          <select onChange={handleValid}  name="team2" id="equipo" defaultValue="option" >
+            <option value="option" disabled>Option 2</option>
+            <option value="">Ninguno</option>
+            {equipo.map((team) => (
+              <option key={team.id} value={team.name}>
+                {team.name}
+              </option>
+            ))}
+          </select>
+          <select onChange={handleValid}  name="team3" id="equipo" defaultValue="option" >
+            <option value="option" disabled>Option 3</option>
+            <option value="">Ninguno</option>
             {equipo.map((team) => (
               <option key={team.id} value={team.name}>
                 {team.name}

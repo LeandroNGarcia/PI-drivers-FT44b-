@@ -20,9 +20,6 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      description: {
-        type: DataTypes.TEXT,
-      },
       image: {
         type: DataTypes.TEXT,
         allowNull:false
@@ -35,9 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      teams: {
-        type: DataTypes.STRING
-      }
+
     },
     {
       timestamps: false

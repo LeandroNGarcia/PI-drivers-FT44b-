@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const data = require("../../api/db.json");
 const { Driver } = require("../db")
+const { Team } = require("../db")
 
 let drivers = [];
 
@@ -18,7 +19,9 @@ drivers = data.drivers.map((d) => ({
 }));
 
 const allDV = async () => {
-  const driverDB = await Driver.findAll();
+  const driverDB = await Driver.findAll({
+    order: [["id", "ASC"]]
+  });
 
   if(driverDB){
     const AllDv = driverDB.concat(drivers)
@@ -40,7 +43,12 @@ try {
   }
 
   // Si no se encuentra en el array local, buscar en la base de datos
-  const driverFromDB = await Driver.findByPk(id);
+  const driverFromDB = await Driver.findByPk(id,{
+    include:[{
+      model: Team,
+      attributes: ['name'],
+    }]
+  });
 
   // Devolver el resultado de la base de datos
   return driverFromDB;

@@ -86,8 +86,8 @@ function App() {
   //?Control de formulario
   const postDriver = async (driverData) => {
     try {
-      const { name, lastname, birthday, nationality, teams } = driverData
-      const { data } = await axios.post("http://localhost:3001/drivers", {name,lastname,birthday,nationality,teams})
+      const { name, lastname, birthday, nationality, team1, team2, team3 } = driverData
+      const { data } = await axios.post("http://localhost:3001/drivers", {name,lastname,birthday,nationality,team1,team2,team3})
       if(data.aprovation){
         navigate("/driver-custom")
       }
