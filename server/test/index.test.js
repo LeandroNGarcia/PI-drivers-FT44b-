@@ -1,3 +1,4 @@
+const Driver = require("../src/models/Driver.js");
 const server = require("../src/server.js");
 const session = require("supertest");
 const agent = session(server);
@@ -36,9 +37,14 @@ describe("Testeo de server", () => {
   });
 
   describe("Ruta delete", () => {
-    it("Si elimina al corredor debe devolver un mensaje de que se elimino exitosamente", async () => {
+    it.only("Si elimina al corredor debe devolver un mensaje de que se elimino exitosamente", async () => {
+      const ejemplo = await agent.get("/driver/?name=Tomas");
+      let Id = ""
+      await ejemplo.body.forEach(driver => {
+        Id = driver.id
+      });
       const res = await agent.delete(
-        "/drivers/a3619c1e-4c4d-4c48-a1be-ba4d904728ff"
+        `/drivers/${Id}`
       );
       expect(res.body.message).toEqual("Corredor eliminado exitosamente");
     });
@@ -49,7 +55,7 @@ describe("Testeo de server", () => {
   });
 
   describe("Ruta get by id", () => {
-    it.only("Debe devolver un objeto con todas las propiedades del corredor(si pertenece a la api)", async () => {
+    it("Debe devolver un objeto con todas las propiedades del corredor(si pertenece a la api)", async () => {
         const res = await agent.get("/driver/1")
         expect(res.body).toHaveProperty("id")
         expect(res.body).toHaveProperty("name")
@@ -60,7 +66,7 @@ describe("Testeo de server", () => {
         expect(res.body).toHaveProperty("image")
         expect(res.body).toHaveProperty("description")
     })
-    it.only("Debe devolver un objeto con todas las propiedades del corredor(si pertenece a la DB)", async () => {
+    it("Debe devolver un objeto con todas las propiedades del corredor(si pertenece a la DB)", async () => {
         const res = await agent.get("/driver/b85ac5ef-da75-411e-981a-3c9918c09948")
         expect(res.body).toHaveProperty("id")
         expect(res.body).toHaveProperty("name")
