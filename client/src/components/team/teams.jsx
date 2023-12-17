@@ -5,7 +5,7 @@ import Team from "./team"
 
 const Teams = ({ team }) => {
   const [currentpage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 6;
 
   const indexOfLastItem = currentpage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -19,7 +19,7 @@ const Teams = ({ team }) => {
 
   return (
     <div>
-      <div className="Cards" >
+      <div className="Teams" >
         {team.length ?
           currentTeams.map((equipo) => (
             <Team key={equipo.id} equipo={equipo} />

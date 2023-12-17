@@ -9,11 +9,7 @@ const Drivers = ({ driver }) => {
 
   const [isAll, setIsAll] = useState(true)
   const [currentpage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-
-  // useEffect(() => {
-  //   handleDrivers()
-  // }, [])
+  const itemsPerPage = 6;
 
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
