@@ -114,6 +114,13 @@ function App() {
       {pathname !== "/" && (
         <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT}                 handleDrivers={handleDrivers} handleTeams={handleTeams} />
       )}
+      <footer style={{
+        position:"absolute",
+        bottom:".8em",
+        left:"45%",
+        fontFamily:"Bebas Neue",
+        fontSize:"10px",
+      }}>@copyright2023~https://github.com/LeandroNGarcia</footer>
       <Routes>
         <Route
           path="/"

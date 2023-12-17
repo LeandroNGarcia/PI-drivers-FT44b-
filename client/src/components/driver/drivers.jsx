@@ -37,6 +37,7 @@ const Drivers = ({ driver }) => {
     pageNumbers.push(i);
   }
 
+
   // useEffect(()=>{
   //   handleBackChange("https://youtu.be/Q9qSwDxF6YI?t=7")
   // })
@@ -50,11 +51,11 @@ const Drivers = ({ driver }) => {
           <option value="birthday,asc">Birthday(A)</option>
           <option value="birthday,desc">Birthday(D)</option>
           <option value="lastname,asc">Lastname(A)</option>
-          <option value="lastname,desc">Lastname(B)</option>
+          <option value="lastname,desc">Lastname(D)</option>
           <option value="name,asc">Name(A)</option>
-          <option value="name,desc">Name(B)</option>
+          <option value="name,desc">Name(D)</option>
           <option value="nationality,asc">Nationality(A)</option>
-          <option value="nationality,desc">Nationality(B)</option>
+          <option value="nationality,desc">Nationality(D)</option>
         </select>
       </div>
       <div className="Cards">

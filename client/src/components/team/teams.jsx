@@ -5,7 +5,7 @@ import Team from "./team"
 
 const Teams = ({ team }) => {
   const [currentpage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
 
   const indexOfLastItem = currentpage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -26,7 +26,7 @@ const Teams = ({ team }) => {
           )) :
           <span>No hay escuderias con ese nombre</span>}
       </div>
-      <div className="contain-pages">
+      <div className="contain-pagesTeams">
         {pageNumbers.map((number) => (
           <button className={currentpage === number ? "activePage" : ""} key={number} onClick={() => setCurrentPage(number)}>
             {number}
