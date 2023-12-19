@@ -29,7 +29,6 @@ const CreateDV = ({ postDriver }) => {
     team3: ""
   });
 
-  console.log(driverData);
   const handleValid = (e) => {
     const { name, value } = e.target;
     setDriverData({

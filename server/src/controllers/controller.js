@@ -108,9 +108,32 @@ const filters = async (orderBy, orderDirection) => {
   }
 };
 
+const teams_drivers = async (team) => {
+  const team_driversDB = await Driver.findAll({
+    include: [{
+      model: Team,
+      where: {
+        name: team
+      },
+    }],
+  });
+  const teamDrivers = await drivers.filter((driver) => {
+    if(driver.teams){
+      const driverTeams = driver.teams.split(',').map((t) => t.trim());
+      return driverTeams.includes(team);
+    }
+  });
+  if(team_driversDB){
+    const alldvs = team_driversDB.concat(teamDrivers)
+    return alldvs
+  }
+  return teamDrivers
+}
+
 module.exports = {
   allDV,
   byId,
   byName,
-  filters
+  filters,
+  teams_drivers
 };

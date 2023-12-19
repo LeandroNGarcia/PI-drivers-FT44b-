@@ -1,10 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import Team from "./team"
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentPageTeams } from "../../redux/actions/actions";
 
 const Teams = ({ team }) => {
-  const [currentpage, setCurrentPage] = useState(1);
+  const navigate = useNavigate()
+  // const [currentpage, setCurrentPage] = useState(1);
+  const currentpage = useSelector((state)=> state.currentPageTeams)
+  const dispatch = useDispatch()
   const itemsPerPage = 8;
 
   const indexOfLastItem = currentpage * itemsPerPage;
@@ -31,13 +37,14 @@ const Teams = ({ team }) => {
             <Team key={equipo.id} equipo={equipo} activeTeam={activeTeam} isActive={equipo.id === activeTeam}
             onMouseEnter={() => handleTeamHover(equipo.id)}
             onMouseLeave={() => handleTeamHover(null)}
+            navigate={navigate}
             />
           )) :
           <span>No hay escuderias con ese nombre</span>}
       </div>
       <div className="contain-pagesTeams">
         {pageNumbers.map((number) => (
-          <button className={currentpage === number ? "activePage" : ""} key={number} onClick={() => setCurrentPage(number)}>
+          <button className={currentpage === number ? "activePage" : ""} key={number} onClick={() => dispatch(setCurrentPageTeams(number))}>
             {number}
           </button>
         ))}

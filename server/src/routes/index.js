@@ -98,4 +98,15 @@ router.get("/drivers-custom", async (req, res) => {
 //?Ruta para eliminar a los corredores de la Database por ID
 router.delete("/drivers/:id", deleteDV);
 
+//?Ruta para obtener los corredores pertenecientes a la escuderia solicitada(tanto de la DB como de la Api)
+router.get("/team_drivers/:team", async (req, res) => {
+  try {
+    const { team } = req.params
+    const drivers = await controller.teams_drivers(team);
+    res.status(200).json(drivers)
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
+})
+
 module.exports = router;

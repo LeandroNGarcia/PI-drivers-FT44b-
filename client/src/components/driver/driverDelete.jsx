@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import "./driverDel.css"
 
-const DriverDelete = ({ corredor }) => {
+const DriverDelete = ({ corredor, isActive, onMouseEnter, onMouseLeave, activeDr }) => {
     const { id, name, lastname, nationality, birthday } = corredor;
     const navigate = useNavigate()
     const handleDelete = async (id) => {
@@ -15,14 +16,14 @@ const DriverDelete = ({ corredor }) => {
     }
   return (
     <div style={{
-        backgroundColor:"gray",
-        border:"2px solid black",
-        width:"15em",
-    }}>
-      <h2>{lastname}</h2>
-      <h3 style={{
         cursor:"pointer"
-      }} onClick={()=> navigate(`/driverAdd/${id}`)} >{name}</h3>
+    }}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    className={activeDr === null ? "driverDel" :
+    (`driverDel ${isActive ? "activeDel" : "noFocusDel"}`)}>
+      <h2>{lastname}</h2>
+      <h3 onClick={()=> navigate(`/driverAdd/${id}`)}>{name}</h3>
       <h4>{nationality}</h4>
       <h4>{birthday}</h4>
       <button onClick={()=>{ handleDelete(id); navigate("/driver-custom")}}>Delete</button>

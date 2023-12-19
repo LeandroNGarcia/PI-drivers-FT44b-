@@ -12,6 +12,7 @@ import Drivers from "./components/driver/drivers";
 import Nav from "./components/nav/nav";
 import Teams from "./components/team/teams";
 import DetailCustom from "./components/detail/detailCustom";
+import Team_drivers from "./components/team_drivers/team_drivers";
 
 function App() {
 
@@ -61,7 +62,6 @@ function App() {
 
   //?Manejo de los llamados para los equipos
   const [team, setTeam] = useState([]);
-  console.log(team);
 
   //*Funcion que llama a todos los equipos
   const handleTeams = async () => {
@@ -87,8 +87,8 @@ function App() {
   const postDriver = async (driverData) => {
     try {
       const { name, lastname, birthday, nationality, team1, team2, team3 } = driverData
-      const { data } = await axios.post("http://localhost:3001/drivers", {name,lastname,birthday,nationality,team1,team2,team3})
-      if(data.aprovation){
+      const { data } = await axios.post("http://localhost:3001/drivers", { name, lastname, birthday, nationality, team1, team2, team3 })
+      if (data.aprovation) {
         navigate("/driver-custom")
       }
     } catch (error) {
@@ -112,15 +112,17 @@ function App() {
   return (
     <div style={{ backgroundImage }} className="App">
       {pathname !== "/" && (
-        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT}                 handleDrivers={handleDrivers} handleTeams={handleTeams} />
+        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT} handleDrivers={handleDrivers} handleTeams={handleTeams} />
       )}
-      <footer style={{
-        position:"absolute",
-        bottom:".8em",
-        left:"45%",
-        fontFamily:"Bebas Neue",
-        fontSize:"10px",
-      }}>@copyright2023~https://github.com/LeandroNGarcia</footer>
+      {pathname === "/" && (
+        <footer style={{
+          position: "fixed",
+          bottom: "0",
+          right: "0.5em",
+          fontFamily: "Bebas Neue",
+          fontSize: "10px",
+        }}>@copyright2023~https://github.com/LeandroNGarcia</footer>
+      )}
       <Routes>
         <Route
           path="/"
@@ -146,6 +148,7 @@ function App() {
         />
         <Route path="/driver/:id" element={<Detail navigate={navigate} />} />
         <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} />} />
+        <Route path="/team_drivers/:team" element={<Team_drivers navigate={navigate} />} />
         <Route
           path="/driver-custom"
           element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>

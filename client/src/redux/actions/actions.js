@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ORDER_FILTER, SET_CURRENT_PAGE } from "./actionsTypes";
+import { ORDER_FILTER, SET_CURRENT_PAGE, SET_CURRENT_PAGE_TEAMS } from "./actionsTypes";
 
 export const orderFilter = (orderBy, orderDirection) => {
   return async (dispatch) => {
@@ -30,6 +30,13 @@ export const orderFilter = (orderBy, orderDirection) => {
 export const setCurrentPage = (currentPage) => {
   return {
     type: SET_CURRENT_PAGE,
+    payload: currentPage,
+  };
+}
+
+export const setCurrentPageTeams = (currentPage) => {
+  return {
+    type: SET_CURRENT_PAGE_TEAMS,
     payload: currentPage,
   };
 }

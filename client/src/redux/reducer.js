@@ -1,9 +1,10 @@
-import { ORDER_FILTER } from './actions/actionsTypes';
+import { ORDER_FILTER, SET_CURRENT_PAGE_TEAMS } from './actions/actionsTypes';
 import { SET_CURRENT_PAGE } from './actions/actionsTypes';
 
 const initialState = {
   drivers: [],
   currentPage:1,
+  currentPageTeams:1,
   error: null,
 };
 
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
       return{
         ...state,
         currentPage:action.payload
+      };
+    case SET_CURRENT_PAGE_TEAMS:
+      return {
+        ...state,
+        currentPageTeams:action.payload
       }
     default:
       return state;
