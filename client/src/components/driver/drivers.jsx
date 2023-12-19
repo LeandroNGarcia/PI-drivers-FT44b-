@@ -2,32 +2,31 @@
 /* eslint-disable react/prop-types */
 import Driver from "./driver"
 import { useDispatch, useSelector } from 'react-redux';
-import { orderFilter } from "../../redux/actions/actions";
+import { orderFilter, setCurrentPage } from "../../redux/actions/actions";
 import { useState } from "react";
 
 const Drivers = ({ driver }) => {
 
   const [isAll, setIsAll] = useState(true)
-  const [currentpage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.currentPage)
   const itemsPerPage = 6;
-
-  const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
+  const dispatch = useDispatch();
 
   const handleFilterChange = (e) => {
     const { value } = e.target;
     const [orderBy, orderDirection] = value.split(",");
     dispatch(orderFilter(orderBy, orderDirection));
-    setCurrentPage(1)
+    dispatch(setCurrentPage(1));
   };
 
   const handleState = (param) => {
     setIsAll(param);
-    setCurrentPage(1)
+    dispatch(setCurrentPage(1));
   };
 
   const currentDrivers = isAll ? driver : drivers;
-  const indexOfLastItem = currentpage * itemsPerPage;
+  const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentDriversToDisplay = currentDrivers.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -40,7 +39,7 @@ const Drivers = ({ driver }) => {
 
   // useEffect(()=>{
   //   handleBackChange("https://youtu.be/Q9qSwDxF6YI?t=7")
-  // })
+  // },[])
 
   return (
     <div style={{ position: "relative" }}>
@@ -66,7 +65,7 @@ const Drivers = ({ driver }) => {
       </div>
       <div className="contain-pages">
         {pageNumbers.map((number) => (
-          <button className={currentpage === number ? "activePage" : ""} key={number} onClick={() => setCurrentPage(number)}>
+          <button className={currentPage === number ? "activePage" : ""} key={number} onClick={() => dispatch(setCurrentPage(number))}>
             {number}
           </button>
         ))}

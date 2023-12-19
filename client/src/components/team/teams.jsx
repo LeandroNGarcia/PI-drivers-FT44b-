@@ -17,12 +17,21 @@ const Teams = ({ team }) => {
     pageNumbers.push(i);
   }
 
+  const [activeTeam, setActiveTeam] = useState(null);
+
+  const handleTeamHover = (teamId) => {
+    setActiveTeam(teamId);
+  };
+
   return (
     <div>
       <div className="Teams" >
         {team.length ?
           currentTeams.map((equipo) => (
-            <Team key={equipo.id} equipo={equipo} />
+            <Team key={equipo.id} equipo={equipo} activeTeam={activeTeam} isActive={equipo.id === activeTeam}
+            onMouseEnter={() => handleTeamHover(equipo.id)}
+            onMouseLeave={() => handleTeamHover(null)}
+            />
           )) :
           <span>No hay escuderias con ese nombre</span>}
       </div>
