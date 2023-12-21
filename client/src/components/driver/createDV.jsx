@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import * as valid from "./validation"
 
-const CreateDV = ({ postDriver }) => {
+const CreateDV = ({ postDriver, handleBackChange }) => {
   const [equipo, setEquipo] = useState([])
 
   useEffect(()=>{
@@ -73,6 +74,10 @@ const CreateDV = ({ postDriver }) => {
       }
       return alert("Corrige los errores")
     }
+
+    useEffect(()=>{
+      handleBackChange("https://th.bing.com/th/id/R.52ec20f86fad3b495ac4440a97a04d09?rik=c%2fh74IZDaEqWYg&riu=http%3a%2f%2fwww.hdwallpapers.in%2fwalls%2fformula_1-HD.jpg&ehk=QQNQFgJqBt6dSbrP4bQO6oLHdYvo3Bl5rxTCBAvzDDY%3d&risl=&pid=ImgRaw&r=0")
+    },[])
 
 
     return (

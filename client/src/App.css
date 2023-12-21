@@ -1,9 +1,8 @@
 .App {
   text-align: center;
-  background-size: auto;
+  background-size: cover;
   background-repeat: round;
-  background-attachment: fixed;
-  height: 98vh;
+  min-height: 98vh;
 }
 
 .Cards {
@@ -43,7 +42,7 @@
   filter: none;
 }
 .Team.noFocus{
-  filter: blur(10px);
+  filter: blur(5px);
 }
 .team-icon{
   filter: drop-shadow(black 0px 3px 2px);

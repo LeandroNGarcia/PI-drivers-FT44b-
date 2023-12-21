@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import Team from "./team"
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPageTeams } from "../../redux/actions/actions";
 
-const Teams = ({ team }) => {
+const Teams = ({ team, handleBackChange }) => {
   const navigate = useNavigate()
-  // const [currentpage, setCurrentPage] = useState(1);
   const currentpage = useSelector((state)=> state.currentPageTeams)
   const dispatch = useDispatch()
   const itemsPerPage = 8;
@@ -28,6 +27,10 @@ const Teams = ({ team }) => {
   const handleTeamHover = (teamId) => {
     setActiveTeam(teamId);
   };
+
+  useEffect(()=>{
+    handleBackChange("https://th.bing.com/th/id/R.1b1e44468e03a01d909163fd11a2e6cd?rik=dyo9JMP1od03BA&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f6%2ff%2f5%2f545239.jpg&ehk=pdHDFkR%2b%2fnCYQD9gbWjF%2bPQjO8GJ7CgnkjIYcZPMm1g%3d&risl=&pid=ImgRaw&r=0")
+  },[])
 
   return (
     <div>

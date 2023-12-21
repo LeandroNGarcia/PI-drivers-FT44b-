@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import DriverDelete from "./driverDelete";
 
 /* eslint-disable react/prop-types */
-const DeleteDV = ({ customDriver, handleCustomDriver }) => {
+const DeleteDV = ({ customDriver, handleCustomDriver, handleBackChange }) => {
 
   useEffect(() => {
     handleCustomDriver()
   }, []);
+
+  useEffect(()=>{
+    handleBackChange("https://images.motorsport-magazin.com/images/1200/800/0978146.jpg")
+  },[])
 
   const [activeDr, setActiveDr] = useState(null);
 

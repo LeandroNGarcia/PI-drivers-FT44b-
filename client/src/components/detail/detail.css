@@ -1,18 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 .contain-detail{
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(4px);
     height: 93vh;
 }
 .contain-carnet{
     position: relative;
+    top: 5em;
+    left: 29.8em;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1em;
     background-color: white;
     background-image: url("https://th.bing.com/th/id/R.af2bc997e7939f75fffbbaefd2babab8?rik=Pgf6N8TwpjAc0Q&pid=ImgRaw&r=0");
-    width: 30em;
-    height: 16em;
+    width: 28em;
+    height: 14em;
     display: flex;
-    top: 5em;
-    left: 29em;
     color: black;
     box-shadow: black 0 2px 4px, black 0 2px 10px;
+    transition: all 1s;
+    cursor:default;
+}
+.contain-carnet:hover{
+    transform: scale(1.1) ;
+    box-shadow: white 0 0 20px,white 0 0 50px;
 }
 .datos-carnet{
     position: absolute;
@@ -20,42 +29,60 @@
     top: 1.5em;
 }
 .fuera-carnet{
-    padding-top: 10em;
+    position: relative;
+    left: 24em;
+    padding-top: 7em;
+    padding-bottom: 5em;
+    width: 40em;
+    h4{
+        overflow-y: hidden;
+        height: auto;
+        max-height: 10em;
+        text-align: justify;
+    };
+    h4:hover{
+        overflow-y: scroll;
+    }
 }
 .foto-carnet{
     filter:sepia(70%);
-    width: 150px;
-    height: 150px;
+    width: 123px;
+    height: 120px;
     border: 1px solid transparent;
-    border-radius: 30% 5% ;
 }
 .name::before{
     content: "name: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
 .lastN::before{
     content: "lastname: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
 .birthday::before{
     content: "birthday: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
 .nation::before{
     content: "nationality: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
 .equipos::before{
     content: "teams: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
 .dni::before{
     content: "dni/cuil: ";
+    color: grey;
     font-size: 15px;
     font-weight: 100;
 }
@@ -63,41 +90,47 @@
     position: absolute;
     top: -2em;
     width: max-content;
-    left: -3em;
+    left: -5.4em;
     font-size: .8em;
 }
 .codigo{
     position: relative;
     width: 7em;
-    right: -12em;
-    top: 5.2em;
-    transform: rotate(-90deg);
+    right: -8.5em;
+    top: 2em;
+    filter: drop-shadow(black 0 70px 0);
 }
+.firma{
+    position: absolute;
+    width: 10em;
+    top: 7.5em;
+    right: -1.5em;
+}
+
 .name{
     position: absolute;
-    top: 1em;
-    left: -1.6em;
-
+    top: 1.5em;
+    left: -2.89em;
 }
 .lastN{
     position: absolute;
-    top: -.5em;
-    left: -1.2em;
+    top: -.35em;
+    left: -2.16em;
     width: max-content;
 }
 .birthday{
     position: absolute;
-    top: 8.5em;
+    top: 7.5em;
     left: -12.1em;
 }
 .nation{
     position: absolute;
-    top: 7em;
+    top: 5.5em;
     left: -12.1em;
 }
 .equipos{
     position: absolute;
-    top: 10em;
-    left: -12em;
+    top: 9.6em;
+    left: -12.1em;
     width: max-content;
 }

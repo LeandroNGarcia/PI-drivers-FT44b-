@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script:wght@700&display=swap');
+
+.team_driver{
+    background-color: black;
+    font-family: 'Abril Fatface', serif;
+    cursor: pointer;
+    border: 2px solid transparent;
+    width: 10em;
+    transition: all .1s;
+}
+.team_driver:hover{
+    border-color: white;
+    transform: scale(1.2);
+    color: black;
+    background-color: white;
+    box-shadow: white 0 0 5px, white 0 0 9px
+}
+
+.auto-driver{
+    padding-top: 1em;
+    img {
+        filter: drop-shadow(white 0 15px 0);
+    }
+}

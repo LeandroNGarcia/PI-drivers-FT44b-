@@ -146,14 +146,14 @@ function App() {
             )
           }
         />
-        <Route path="/driver/:id" element={<Detail navigate={navigate} />} />
-        <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} />} />
+        <Route path="/driver/:id" element={<Detail navigate={navigate} handleBackChange={handleBackChange} />} />
+        <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route path="/team_drivers/:team" element={<Team_drivers navigate={navigate} />} />
         <Route
           path="/driver-custom"
           element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>
-          <Route path="add" element={<CreateDV postDriver={postDriver} />} />
-          <Route path="delete" element={<DeleteDV customDriver={customDriver} handleCustomDriver={handleCustomDriver} />} />
+          <Route path="add" element={<CreateDV postDriver={postDriver} handleBackChange={handleBackChange} />} />
+          <Route path="delete" element={<DeleteDV customDriver={customDriver} handleCustomDriver={handleCustomDriver} handleBackChange={handleBackChange} />} />
         </Route>
         <Route path="*" element={<Err404 />} />
       </Routes>
