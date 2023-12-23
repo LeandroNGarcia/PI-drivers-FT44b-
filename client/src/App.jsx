@@ -13,6 +13,7 @@ import Nav from "./components/nav/nav";
 import Teams from "./components/team/teams";
 import DetailCustom from "./components/detail/detailCustom";
 import Team_drivers from "./components/team_drivers/team_drivers";
+import DetailDT from "./components/detail/detailDT";
 
 function App() {
 
@@ -112,13 +113,13 @@ function App() {
   return (
     <div style={{ backgroundImage }} className="App">
       {pathname !== "/" && (
-        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT} handleDrivers={handleDrivers} handleTeams={handleTeams} />
+        <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT} handleDrivers={handleDrivers} handleTeams={handleTeams} local={local} pathname={pathname} />
       )}
       {pathname === "/" && (
         <footer style={{
           position: "fixed",
-          bottom: "0",
-          right: "0.5em",
+          bottom: "1em",
+          right: "1em",
           fontFamily: "Bebas Neue",
           fontSize: "10px",
         }}>@copyright2023~https://github.com/LeandroNGarcia</footer>
@@ -126,7 +127,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Start handleBackChange={handleBackChange} />}
+          element={<Start handleBackChange={handleBackChange} handleDrivers={handleDrivers} />}
         />
         <Route
           path="/home"
@@ -148,7 +149,8 @@ function App() {
         />
         <Route path="/driver/:id" element={<Detail navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} handleBackChange={handleBackChange} />} />
-        <Route path="/team_drivers/:team" element={<Team_drivers navigate={navigate} />} />
+        <Route path="/team_drivers/:team" element={<Team_drivers navigate={navigate} handleBackChange={handleBackChange} />} />
+        <Route path="/driverDT/:id" element={<DetailDT navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route
           path="/driver-custom"
           element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>

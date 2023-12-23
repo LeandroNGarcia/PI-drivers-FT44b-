@@ -33,7 +33,6 @@ router.get("/driver/", async (req, res) => {
   try {
     const { name } = req.query;
     const driver = await controller.byName(name);
-    console.log(driver);
     res.status(200).json(driver);
   } catch (error) {
     res.status(400).send(error.message);

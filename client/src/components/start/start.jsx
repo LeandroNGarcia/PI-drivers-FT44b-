@@ -1,16 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./start.css"
 import Loading from "../loading/loading";
 
-const Start = ({ handleBackChange }) => {
+const Start = ({ handleBackChange, handleDrivers }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleButtonClick = () => {
     setLoading(true);
     handleBackChange("https://th.bing.com/th/id/R.7921678df5cb0f79e5c58ee7b5823803?rik=Vx1k2BnocsdO2Q&pid=ImgRaw&r=0");
+    handleDrivers()
 
     setTimeout(() => {
       setLoading(false);
@@ -20,7 +22,7 @@ const Start = ({ handleBackChange }) => {
 
   useEffect(() => {
     handleBackChange("https://wallpaperaccess.com/full/4005756.jpg")
-  }, [handleBackChange])
+  }, [])
 
   return (
     <div className="contain">

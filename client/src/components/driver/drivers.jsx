@@ -43,7 +43,7 @@ const Drivers = ({ driver, handleBackChange }) => {
   return (
     <div style={{ position: "relative" }}>
       <div className="filter">
-        <button onClick={() => handleState(true)}>All</button>
+        <button className="button-all" onClick={() => handleState(true)}>All</button>
         <select name="Filtro" onChangeCapture={() => handleState(false)} onChange={handleFilterChange} defaultValue="opciones">
           <option value="opciones" disabled="disable">Opciones</option>
           <option value="birthday,asc">Birthday(A)</option>

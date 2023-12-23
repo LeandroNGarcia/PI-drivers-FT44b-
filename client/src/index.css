@@ -1,5 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: black 0 0 1px;
   color: white;
   color-scheme: dark;
+}
+
+select {
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid white;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.1em;
+  transition: .2s;
+}
+
+select:hover{
+  box-shadow: white 0 0 15px;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: white 0 0 15px;
+  option {
+    background-color: black;
+  }
 }

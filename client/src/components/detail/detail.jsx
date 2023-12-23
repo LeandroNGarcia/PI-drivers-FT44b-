@@ -42,7 +42,7 @@ const Detail = ({ navigate, handleBackChange }) => {
           <h4 className="nation">{nationality}</h4>
           <h4 className="dni">{id}</h4>
           {teams ? (
-            <h4 className="equipos">{teams}</h4>
+            <h4 className={(teams.split("").length < 4 ) ? "equipos" : "equiposMuchos"}>{teams}</h4>
           ) : (
             Teams && (
               <h4 className="equipos">{Teams.map((equipo) => equipo.name).join(", ")}</h4>

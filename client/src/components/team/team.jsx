@@ -12,7 +12,7 @@ const Driver = ({ equipo, isActive, onMouseEnter, onMouseLeave, activeTeam, navi
       onClick={() => navigate(`/team_drivers/${name}`)}
       >
       <h2>{id}</h2>
-      <img src="../../../public/F1.svg" alt="foto" width={100} className="team-icon" />
+      <img src="/F1.svg" alt="foto" width={100} className="team-icon" />
       <h3>{name}</h3>
     </div>
   )

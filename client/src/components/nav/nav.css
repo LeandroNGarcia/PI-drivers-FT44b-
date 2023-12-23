@@ -1,4 +1,35 @@
 .nav{
     background-color: white;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+.driverHome,
+.teamHome{
+    height: 3em;
+}
+
+.inputHome{
+    height: 2em;
+}
+.custom{
+    position: relative;
+    right: -20em;
+    height: 3em;
+}
+.logout{
+    position: relative;
+    right: -19.1em;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }

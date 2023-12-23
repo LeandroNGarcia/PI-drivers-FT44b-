@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: Syne;
     src: url("Fuentes/Syne.ttf")
-}
+} */
 
 @keyframes appear {
     0% {
@@ -62,13 +62,15 @@
         color: rgba(255, 255, 255, 0);
     }
 }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
 .start {
     font-size: 3em;
-    font-family: Syne;
     background: none;
     color: white;
-    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-style: italic;
     border: 2px solid transparent;
     cursor: pointer;
     animation: appear 2s linear, iteran 1.8s linear infinite;
@@ -81,8 +83,7 @@
     background: none;
     border-color: transparent;
     font-size: 3em;
-    font-family: Syne;
-    font-weight: 800;
+    font-weight: 900;
     color: white;
 }
 
@@ -114,20 +115,13 @@
     transform: translate(-50%, -50%);
 }
 
-
-.video-background {
-    width: 100%;
-    height: 100%;
-    object-fit:cover;
-  }
-
 .loader{
     display: block;
     position: relative;
     top: 22em;
     right: 40em;
     height: 12px;
-    width: 1270%;
+    width: 1436%;
     border: 1px solid #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -142,9 +136,9 @@
     background: #FF3D00;
     animation: 6s prog ease-in;
   }
-  
+
   @keyframes prog {
-    to  {   width: 100%;}
+    to  {  width: 100%;}
   }
 
 .cargando {

@@ -1,9 +1,18 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
 import axios from "axios"
+import "./detail.css"
 
-const DetailCustom = ({ navigate }) => {
+const DetailDT = ({ navigate, handleBackChange }) => {
+
+    const currentPath = useSelector((state)=> state.curretnPath)
+
+  useEffect(()=>{
+    handleBackChange("https://wallpaperaccess.com/full/563870.jpg")
+  },[])
 
   const { id } = useParams();
   const [driver, setDriver] = useState({})
@@ -21,7 +30,11 @@ const DetailCustom = ({ navigate }) => {
 
   }, [id])
 
-  const { name, lastname, birthday, nationality, description, teams, Teams, image } = driver
+  const { name, lastname, birthday, nationality, description, teams, Teams, image } = driver;
+
+  console.log(teams ? teams:"");
+  const equiposSepar = teams ? teams.split(",") : ""
+  console.log(equiposSepar);
 
   return (
     <div className="contain-detail">
@@ -36,7 +49,7 @@ const DetailCustom = ({ navigate }) => {
           <h4 className="nation">{nationality}</h4>
           <h4 className="dni">{id}</h4>
           {teams ? (
-            <h4 className={(teams.split("").length < 4 ) ? "equipos" : "equiposMuchos"}>{teams}</h4>
+            <h4 className={(equiposSepar.length <= 4)  ? "equipos" : "equiposMuchos"}>{teams}</h4>
           ) : (
             Teams && (
               <h4 className="equipos">{Teams.map((equipo) => equipo.name).join(", ")}</h4>
@@ -44,10 +57,12 @@ const DetailCustom = ({ navigate }) => {
           )}
         </div>
       </div>
-      <div className="fuera-carnet"></div>
+      <div className="fuera-carnet">
       <h4>{description}</h4>
-      <button onClick={() => navigate("/driver-custom/delete")} >Volver Atras</button>
+      </div>
+      <button onClick={() => navigate(currentPath)} >Volver Atras</button>
     </div>
   )
 }
-export default DetailCustom
+
+export default DetailDT

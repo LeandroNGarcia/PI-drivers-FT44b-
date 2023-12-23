@@ -6,7 +6,7 @@
 }
 
 .Cards {
-  padding-top: 3em;
+  padding-top: 2em;
   display: grid;
   margin-left: 5em;
   margin-right: 5em;
@@ -48,9 +48,13 @@
   filter: drop-shadow(black 0px 3px 2px);
 }
 
+/* Importa la fuente Press Start 2P desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 button {
   cursor: pointer;
   padding: .5em;
+  font-family: 'Press Start 2P', cursive;
   font-size: 1em;
   font-weight: bold;
   color: black;
@@ -63,7 +67,7 @@ button:hover {
   border-bottom-color: red;
   color: red;
   font-weight: bold;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .activePage {
@@ -75,7 +79,6 @@ button:hover {
   border-bottom-color: red;
   color: red;
   font-weight: bold;
-  background-color: whitesmoke;
 }
 
 .contain-pages{
@@ -98,4 +101,33 @@ button:hover {
   gap: .5em;
   flex-wrap: wrap;
   margin-bottom: .5em;
+}
+
+.filter{
+  background-color: rgba(0, 0, 0, 0.562);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  select{
+    height: 2.3em;
+    border-left: none;
+  }
+}
+.button-all{
+  background-color: transparent;
+  font-family: 'Shadows Into Light', cursive;
+  font-weight: 100;
+  width: 2.3em;
+  height: 2.5em;
+  color: white;
+  border: 1px solid white;
+  transition: .2s;
+}
+.button-all:hover{
+  background-color: transparent;
+  font-weight: 100;
+  color: white;
+  border-bottom-color: white;
+  box-shadow: white 0 0 15px;
 }

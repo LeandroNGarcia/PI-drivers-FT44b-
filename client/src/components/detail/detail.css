@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 .contain-detail{
     backdrop-filter: blur(4px);
-    height: 93vh;
+    height: 91.5vh;
 }
 .contain-carnet{
     position: relative;
@@ -80,6 +80,12 @@
     font-size: 15px;
     font-weight: 100;
 }
+.equiposMuchos::before{
+    content: "teams: ";
+    color: grey;
+    font-size: 15px;
+    font-weight: 100;
+}
 .dni::before{
     content: "dni/cuil: ";
     color: grey;
@@ -130,7 +136,15 @@
 }
 .equipos{
     position: absolute;
+    font-size: 1em;
     top: 9.6em;
     left: -12.1em;
     width: max-content;
+}
+.equiposMuchos{
+    position: absolute;
+    font-size: .5em;
+    width: max-content;
+    bottom: -11em;
+    left: -24.2em;
 }
