@@ -22,7 +22,7 @@ const DriverDelete = ({ corredor, isActive, onMouseEnter, onMouseLeave, activeDr
       onMouseLeave={onMouseLeave}
       className={activeDr === null ? "driverDel" :
         (`driverDel ${isActive ? "activeDel" : "noFocusDel"}`)}>
-      <div onClick={() => navigate(`/driverAdd/${id}`)}>
+      <div onClick={() => navigate(`/driver/${id}`)}>
       <h2>{lastname}</h2>
       <h3>{name}</h3>
       <h4>{nationality}</h4>

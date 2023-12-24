@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .App {
   text-align: center;
   background-size: cover;
@@ -48,26 +50,23 @@
   filter: drop-shadow(black 0px 3px 2px);
 }
 
-/* Importa la fuente Press Start 2P desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 button {
   cursor: pointer;
   padding: .5em;
   font-family: 'Press Start 2P', cursive;
-  font-size: 1em;
+  font-size: .8em;
   font-weight: bold;
-  color: black;
+  color: white;
+  filter: drop-shadow(black 0 0 5px);
   border: 2px solid transparent;
-  background-color: white;
-  transition: all .5s;
+  background-color: transparent;
+  transition: all .3s;
 }
 
 button:hover {
   border-bottom-color: red;
   color: red;
   font-weight: bold;
-  /* background-color: whitesmoke; */
 }
 
 .activePage {
@@ -118,6 +117,7 @@ button:hover {
   background-color: transparent;
   font-family: 'Shadows Into Light', cursive;
   font-weight: 100;
+  font-size: 1em;
   width: 2.3em;
   height: 2.5em;
   color: white;

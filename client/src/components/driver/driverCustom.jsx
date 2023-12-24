@@ -15,7 +15,6 @@ const DriverCustom = ({ navigate }) => {
         borderBottomColor: "red",
         color:"red",
         fontWeight:"bold",
-        backgroundColor:"whitesmoke"
       } : {}} onClick={()=>navigate("/driver-custom/add")}>
           Crear
         </button>
@@ -25,7 +24,6 @@ const DriverCustom = ({ navigate }) => {
         borderBottomColor: "red",
         color:"red",
         fontWeight:"bold",
-        backgroundColor:"whitesmoke"
       } : {}} onClick={()=>navigate("/driver-custom/delete")}>
           Borrar
         </button>

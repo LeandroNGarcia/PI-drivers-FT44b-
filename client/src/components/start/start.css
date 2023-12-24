@@ -1,7 +1,4 @@
-/* @font-face {
-    font-family: Syne;
-    src: url("Fuentes/Syne.ttf")
-} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
 @keyframes appear {
     0% {
@@ -62,7 +59,6 @@
         color: rgba(255, 255, 255, 0);
     }
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
 .start {
     font-size: 3em;

@@ -1,33 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
-.create-driver-contain{
+
+.create-driver-contain {
     background-color: rgba(0, 0, 0, 0.459);
     backdrop-filter: blur(5px);
-    font-family:'Lilita One', sans-serif;
+    font-family: 'Lilita One', sans-serif;
     width: max-content;
     border: 2px solid transparent;
     border-radius: 9px;
     padding: 1.5em;
     transition: all .2s;
 }
-.create-driver-contain:hover{
+
+.create-driver-contain:hover {
     border-color: white;
     box-shadow: white 0 0 20px, white 0 0px 20px;
     transform: translate(0, -10px);
 }
 
-.inputValid{
+.create-driver-contain label{
+    font-size: 1.2em;
+}
+
+.inputValid {
     background-color: transparent;
     border: 2px solid transparent;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    font-size: 1em;
     border-radius: 2px;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
 }
 
 
-.inputValid:hover{
+.inputValid:hover {
     border-bottom-color: white;
 }
-.inputValid:focus{
+
+.inputValid:focus {
     outline: none;
     border-color: white;
     box-shadow: white 0 2px 15px;
@@ -35,19 +46,23 @@
 
 .errSpan {
     color: red;
-    font-size: .7em;
+    font-size: 1em;
     text-shadow: 0 4px 9px red,
         0 1px 2px red;
 }
 
-.inputError{
+.inputError {
     background-color: transparent;
     text-align: center;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
     border: 2px solid transparent;
     border-bottom-color: red;
 }
 
-.inputError:hover{
+.inputError:hover {
     border-bottom-color: red;
     box-shadow: red 0 2px 1px;
 }
@@ -59,26 +74,30 @@
     box-shadow: red 0 2px 15px;
 }
 
-#equipo{
+#equipo {
     background-color: transparent;
     text-align: center;
     border: 1px solid white;
     font-family: 'Shadows Into Light', cursive;
     font-size: 1.1em;
 }
-#equipo:focus{
+
+#equipo:focus {
     outline: none;
     box-shadow: white 0 0 15px;
-   option{
-    background-color: black;
-   }
+
+    option {
+        background-color: black;
+    }
 }
-.add{
+
+.add {
     background-color: transparent;
     color: white;
     transform: scale(1.6);
 }
-.add:hover{
+
+.add:hover {
     background-color: transparent;
     filter: drop-shadow(white 0 0 8px);
     color: white;

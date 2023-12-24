@@ -12,7 +12,6 @@ const Nav = ({ uselocal, onSearch, onSearchT, navigate, handleDrivers, handleTea
         borderBottomColor: "red",
         color:"red",
         fontWeight:"bold",
-        // backgroundColor:"whitesmoke"
       } : {}} onClick={() => { uselocal(true); navigate("/home"); handleDrivers() }} >
         Drivers
       </button>
@@ -21,7 +20,6 @@ const Nav = ({ uselocal, onSearch, onSearchT, navigate, handleDrivers, handleTea
         borderBottomColor: "red",
         color:"red",
         fontWeight:"bold",
-        // backgroundColor:"whitesmoke"
       } : {}} onClick={() => { uselocal(false); navigate("/home"); handleTeams() }} >
         Teams
       </button>
@@ -30,7 +28,6 @@ const Nav = ({ uselocal, onSearch, onSearchT, navigate, handleDrivers, handleTea
         borderBottomColor: "red",
         color:"red",
         fontWeight:"bold",
-        // backgroundColor:"whitesmoke"
       } : {}} onClick={() => navigate("/driver-custom")} >
       Customization Hub
       </button>

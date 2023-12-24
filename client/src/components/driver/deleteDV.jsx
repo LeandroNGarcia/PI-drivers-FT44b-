@@ -1,12 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { setCurrentPath } from "../../redux/actions/actions";
 import DriverDelete from "./driverDelete";
 
 /* eslint-disable react/prop-types */
 const DeleteDV = ({ customDriver, handleCustomDriver, handleBackChange }) => {
 
+  const dispatch = useDispatch()
+  const { pathname } = useLocation()
+
   useEffect(() => {
-    handleCustomDriver()
+    handleCustomDriver();
+    dispatch(setCurrentPath(pathname))
   }, []);
 
   useEffect(()=>{
@@ -21,7 +28,7 @@ const DeleteDV = ({ customDriver, handleCustomDriver, handleBackChange }) => {
 
   return (
     <div>
-      <h1>¿Que corredor deseas dar de baja?</h1>
+      <h1 className="titulo-delete">¿Que corredor deseas dar de baja?</h1>
       <div style={{
         paddingTop: "3em",
         display: "flex",

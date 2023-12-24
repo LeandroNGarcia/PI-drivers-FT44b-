@@ -99,7 +99,7 @@ const CreateDV = ({ postDriver, handleBackChange }) => {
         <br />
         <label htmlFor="nationality">Nationality:</label>
         <br />
-        <input type="text" name="nationality" onChange={handleValid} placeholder="Nacionalidad en ingles" className={error.nationality ? "inputError" : "inputValid"} />
+        <input type="text" name="nationality" onChange={handleValid} placeholder="Nacionalidad" className={error.nationality ? "inputError" : "inputValid"} />
         <br />
         <span className="errSpan">{error.nationality}</span>
         <br />

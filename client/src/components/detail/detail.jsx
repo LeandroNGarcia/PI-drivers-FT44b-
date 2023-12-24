@@ -2,11 +2,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useSelector } from "react-redux"
 import axios from "axios"
 import "./detail.css"
 
 const Detail = ({ navigate, handleBackChange }) => {
 
+  const currentPath = useSelector((state) => state.curretnPath)
   useEffect(()=>{
     handleBackChange("https://wallpaperaccess.com/full/563870.jpg")
   },[])
@@ -53,7 +55,7 @@ const Detail = ({ navigate, handleBackChange }) => {
       <div className="fuera-carnet">
       <h4>{description}</h4>
       </div>
-      <button onClick={() => navigate("/home")} >Volver Atras</button>
+      <button onClick={() => navigate(currentPath)} >Volver Atras</button>
     </div>
   )
 }
