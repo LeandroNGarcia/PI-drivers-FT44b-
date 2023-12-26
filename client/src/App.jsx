@@ -11,9 +11,7 @@ import { useState } from "react";
 import Drivers from "./components/driver/drivers";
 import Nav from "./components/nav/nav";
 import Teams from "./components/team/teams";
-import DetailCustom from "./components/detail/detailCustom";
 import Team_drivers from "./components/team_drivers/team_drivers";
-import DetailDT from "./components/detail/detailDT";
 
 function App() {
 
@@ -112,9 +110,9 @@ function App() {
 
   return (
     <div style={{ backgroundImage }} className="App">
-      {pathname !== "/" && (
+      {(pathname !== "/" ) ? (
         <Nav navigate={navigate} onSearch={onSearch} uselocal={uselocal} onSearchT={onSearchT} handleDrivers={handleDrivers} handleTeams={handleTeams} local={local} pathname={pathname} />
-      )}
+      ) : ""}
       {pathname === "/" && (
         <footer style={{
           position: "fixed",
@@ -122,7 +120,9 @@ function App() {
           right: "1em",
           fontFamily: "Bebas Neue",
           fontSize: "10px",
-        }}>@copyright2023~https://github.com/LeandroNGarcia</footer>
+        }}>
+          <a target="_blank" rel="noreferrer" style={{textDecoration:"none", cursor:"pointer"}} href="https://github.com/LeandroNGarcia">@copyright2023~https://github.com/LeandroNGarcia</a>
+          </footer>
       )}
       <Routes>
         <Route
@@ -148,16 +148,14 @@ function App() {
           }
         />
         <Route path="/driver/:id" element={<Detail navigate={navigate} handleBackChange={handleBackChange} />} />
-        <Route path="/driverAdd/:id" element={<DetailCustom navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route path="/team_drivers/:team" element={<Team_drivers navigate={navigate} handleBackChange={handleBackChange} />} />
-        <Route path="/driverDT/:id" element={<DetailDT navigate={navigate} handleBackChange={handleBackChange} />} />
         <Route
           path="/driver-custom"
           element={<DriverCustom navigate={navigate} handleBackChange={handleBackChange} />}>
-          <Route path="add" element={<CreateDV postDriver={postDriver} handleBackChange={handleBackChange} />} />
+          <Route path="add" element={<CreateDV postDriver={postDriver} handleBackChange={handleBackChange} navigate={navigate} />} />
           <Route path="delete" element={<DeleteDV customDriver={customDriver} handleCustomDriver={handleCustomDriver} handleBackChange={handleBackChange} />} />
         </Route>
-        <Route path="*" element={<Err404 />} />
+        <Route path="*" element={<Err404 navigate={navigate} handleBackChange={handleBackChange} />} />
       </Routes>
     </div>
   );

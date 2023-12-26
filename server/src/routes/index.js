@@ -108,4 +108,14 @@ router.get("/team_drivers/:team", async (req, res) => {
   }
 })
 
+//?Ruta para obtener todos las nacionalidades y ponerlas como opcion para el form
+router.get("/nationalitys", async (req,res) => {
+  try {
+    const nationalitys = await controller.allNationalitys()
+    res.status(200).json(nationalitys)
+  } catch (error) {
+    res.status(400).json(error.message)
+  }
+})
+
 module.exports = router;

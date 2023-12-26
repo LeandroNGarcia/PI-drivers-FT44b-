@@ -28,7 +28,9 @@
 }
 
 .inputHome:hover {
-    box-shadow: white 0 0 10px, white 0 0 15px;
+    box-shadow: red 0 0 10px, red 0 0 15px;
+    border-color: red;
+    color: red;
     transform: scale(1.1);
 
 }
@@ -46,6 +48,10 @@
 .inputHome::placeholder {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
+}
+
+.inputHome:hover::placeholder {
+    color: red;
 }
 
 .custom {

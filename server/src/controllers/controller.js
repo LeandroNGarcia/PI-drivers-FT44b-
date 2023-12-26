@@ -1,7 +1,7 @@
 const { Op } = require("sequelize");
-const data = require("../../api/db.json");
 const { Driver } = require("../db")
 const { Team } = require("../db")
+const data = require("../../api/db.json");
 
 let drivers = [];
 
@@ -130,10 +130,22 @@ const teams_drivers = async (team) => {
   return teamDrivers
 }
 
+const allNationalitys = () => {
+  const nacionalidadesUnicas = Array.from(new Set(drivers.map((driver) => driver.nationality)));
+
+  const nacionalidadesConId = nacionalidadesUnicas.map((nacionalidad, index) => ({
+    id: index + 1,
+    nationality: nacionalidad,
+  }));
+
+  return nacionalidadesConId;
+}
+
 module.exports = {
   allDV,
   byId,
   byName,
   filters,
-  teams_drivers
+  teams_drivers,
+  allNationalitys
 };

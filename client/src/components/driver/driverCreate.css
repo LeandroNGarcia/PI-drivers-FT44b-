@@ -5,17 +5,33 @@
     background-color: rgba(0, 0, 0, 0.459);
     backdrop-filter: blur(5px);
     font-family: 'Lilita One', sans-serif;
-    width: max-content;
+    width: clamp(30em, 80%, 70em);
     border: 2px solid transparent;
     border-radius: 9px;
     padding: 1.5em;
     transition: all .2s;
+    position: relative;
+    bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.equipos-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 2px;
+    width: max-content;
+    font-size: clamp(.3em, 80%, .8em);
 }
 
 .create-driver-contain:hover {
     border-color: white;
     box-shadow: white 0 0 20px, white 0 0px 20px;
-    transform: translate(0, -10px);
+    transform: translate(0, -8px);
 }
 
 .create-driver-contain label{
@@ -36,6 +52,7 @@
 
 .inputValid:hover {
     border-bottom-color: white;
+    box-shadow: none;
 }
 
 .inputValid:focus {
@@ -72,23 +89,6 @@
     border-color: red;
     border-radius: 3px;
     box-shadow: red 0 2px 15px;
-}
-
-#equipo {
-    background-color: transparent;
-    text-align: center;
-    border: 1px solid white;
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 1.1em;
-}
-
-#equipo:focus {
-    outline: none;
-    box-shadow: white 0 0 15px;
-
-    option {
-        background-color: black;
-    }
 }
 
 .add {

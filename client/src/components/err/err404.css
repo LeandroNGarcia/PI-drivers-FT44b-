@@ -1,0 +1,17 @@
+.contain-err{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.err{
+    background-color: rgba(255, 255, 255, 0.185);
+    backdrop-filter: blur(10px);
+    width: 30em;
+    height: 30em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

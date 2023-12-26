@@ -115,19 +115,17 @@ button:hover {
 }
 .button-all{
   background-color: transparent;
-  font-family: 'Shadows Into Light', cursive;
-  font-weight: 100;
+  border: 2px solid transparent;
+  padding-top: .5em;
+  padding-bottom: .5em;
   font-size: 1em;
-  width: 2.3em;
-  height: 2.5em;
-  color: white;
-  border: 1px solid white;
-  transition: .2s;
+  border-radius: 2px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
 }
 .button-all:hover{
-  background-color: transparent;
-  font-weight: 100;
-  color: white;
   border-bottom-color: white;
-  box-shadow: white 0 0 15px;
+  box-shadow: none;
+  color: white;
 }

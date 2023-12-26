@@ -2,14 +2,17 @@
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import "./driverDel.css"
+import { useDispatch } from "react-redux";
+import { setDelete } from "../../redux/actions/actions";
 
 const DriverDelete = ({ corredor, isActive, onMouseEnter, onMouseLeave, activeDr }) => {
   const { id, name, lastname, nationality, birthday } = corredor;
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleDelete = async (id) => {
     try {
-      const { data } = await axios.delete(`http://localhost:3001/drivers/${id}`);
-      alert(data.message);
+      await axios.delete(`http://localhost:3001/drivers/${id}`);
+      return dispatch(setDelete(true))
     } catch (error) {
       console.log(error);
     }
@@ -28,7 +31,7 @@ const DriverDelete = ({ corredor, isActive, onMouseEnter, onMouseLeave, activeDr
       <h4>{nationality}</h4>
       <h4>{birthday}</h4>
       </div>
-      <button onClick={() => { handleDelete(id); navigate("/driver-custom") }}>
+      <button onClick={() => { handleDelete(id) }}>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <span className="material-symbols-outlined">
           delete

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ORDER_FILTER, SET_CURRENT_PAGE, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH } from "./actionsTypes";
+import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE } from "./actionsTypes";
 
 export const orderFilter = (orderBy, orderDirection) => {
   return async (dispatch) => {
@@ -45,5 +45,19 @@ export const setCurrentPath = (currentPage) => {
   return {
     type: SET_CURRENT_PATH,
     payload: currentPage,
+  };
+}
+
+export const setAccess = (boolean) => {
+  return {
+    type: SET_ACCESS,
+    payload: boolean,
+  };
+}
+
+export const setDelete = (boolean) => {
+  return {
+    type: SET_DELETE,
+    payload: boolean,
   };
 }
