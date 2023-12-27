@@ -61,14 +61,13 @@
 }
 
 .start {
-    font-size: 3em;
+    font-size: 2em;
     background: none;
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    font-style: italic;
+    font-family: 'Press Start 2P', cursive;
     border: 2px solid transparent;
     cursor: pointer;
+    text-shadow: none;
     animation: appear 2s linear, iteran 1.8s linear infinite;
     transition: all .5s;
 }
@@ -78,7 +77,8 @@
     animation: appear 2s linear;
     background: none;
     border-color: transparent;
-    font-size: 3em;
+    font-size: 2.3em;
+    text-shadow: black -.1em .1em 0;
     font-weight: 900;
     color: white;
 }
@@ -111,7 +111,7 @@
     transform: translate(-50%, -50%);
 }
 
-.loader{
+.loader {
     display: block;
     position: relative;
     top: 22em;
@@ -121,8 +121,9 @@
     border: 1px solid #fff;
     border-radius: 10px;
     overflow: hidden;
-  }
-  .loader:after{
+}
+
+.loader:after {
     content: '';
     position: absolute;
     left: 0;
@@ -131,11 +132,13 @@
     width: 0;
     background: #FF3D00;
     animation: 6s prog ease-in;
-  }
+}
 
-  @keyframes prog {
-    to  {  width: 100%;}
-  }
+@keyframes prog {
+    to {
+        width: 100%;
+    }
+}
 
 .cargando {
     position: relative;
@@ -148,7 +151,7 @@
     margin: 0 auto;
     letter-spacing: .15em;
     animation:
-        typing 2.5s steps(40, end) infinite ;
+        typing 2.5s steps(40, end) infinite;
 }
 
 /* The typing effect */

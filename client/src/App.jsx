@@ -121,7 +121,7 @@ function App() {
           fontFamily: "Bebas Neue",
           fontSize: "10px",
         }}>
-          <a target="_blank" rel="noreferrer" style={{textDecoration:"none", cursor:"pointer"}} href="https://github.com/LeandroNGarcia">@copyright2023~https://github.com/LeandroNGarcia</a>
+          <a target="_blank" rel="noreferrer" style={{textDecoration:"none", cursor:"pointer", color:"white"}} href="https://github.com/LeandroNGarcia">@copyright2023~https://github.com/LeandroNGarcia</a>
           </footer>
       )}
       <Routes>

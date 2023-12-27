@@ -1,5 +1,4 @@
-import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE } from './actions/actionsTypes';
-import { SET_CURRENT_PAGE } from './actions/actionsTypes';
+import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE, SET_ID_DELETE, SET_CURRENT_PAGE } from './actions/actionsTypes';
 
 const initialState = {
   drivers: [],
@@ -8,7 +7,7 @@ const initialState = {
   curretnPath:"",
   access:false,
   deleteStatus:false,
-  error: null,
+  idDelete:""
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +16,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         drivers: action.payload.drivers,
-        error: action.payload.error,
       };
     case SET_CURRENT_PAGE:
       return{
@@ -43,6 +41,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         deleteStatus:action.payload
+      }
+    case SET_ID_DELETE:
+      return {
+        ...state,
+        idDelete:action.payload
       }
     default:
       return state;

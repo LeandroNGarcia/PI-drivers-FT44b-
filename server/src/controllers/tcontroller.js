@@ -37,9 +37,7 @@ const allTeams = async () => {
 };
 
 const teamByName = async (name) => {
-  // const team = teams.filter((a) =>
-  //   a.name.toLowerCase().startsWith(name.toLowerCase())
-  // );
+
   const team = await Team.findAll({
     where:{
       name:{

@@ -152,3 +152,17 @@
     bottom: -11em;
     left: -24.2em;
 }
+.serverDB{
+    position: absolute;
+    bottom: -11em;
+    right: -13.5em;
+    font-family: 'Press Start 2P', cursive;
+    font-size: .5em;
+}
+.serverAPI{
+    position: absolute;
+    bottom: -11em;
+    right: -11em;
+    font-family: 'Press Start 2P', cursive;
+    font-size: .5em;
+}

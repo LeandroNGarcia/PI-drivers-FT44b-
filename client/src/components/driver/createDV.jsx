@@ -107,8 +107,8 @@ const CreateDV = ({ postDriver, handleBackChange }) => {
         <select name="nationality" placeholder="Nationality" className="inputValid" onChange={handleValid} defaultValue={"option"} >
           <option value="option" style={{color:"gray"}} disabled >Nationality</option>
           {nation.map((nacion)=> (
-            <option key={nacion.id} value={nacion.nationality}>
-              {nacion.nationality}
+            <option key={nacion.id} value={nacion.name}>
+              {nacion.name}
             </option>
           ))}
         </select>

@@ -31,7 +31,7 @@
     background-color: white;
     color: black;
     transition: all 0.1s;
-    filter: none
+    text-shadow: none
   }
 
   ;
@@ -63,4 +63,26 @@
     'wght'500,
     'GRAD'0,
     'opsz'24
+}
+
+.Mostrar{
+  background-color: rgba(255, 255, 255, 0.404);
+  backdrop-filter: blur(10px);
+  width: 50em;
+  padding: 1em;
+  height: 20em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
+  h2{
+    font-size: 1em;
+    filter: drop-shadow(black -.1em .2em 0);
+  }
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE } from "./actionsTypes";
+import { ORDER_FILTER, SET_ACCESS, SET_CURRENT_PAGE, SET_CURRENT_PAGE_TEAMS, SET_CURRENT_PATH, SET_DELETE, SET_ID_DELETE } from "./actionsTypes";
 
 export const orderFilter = (orderBy, orderDirection) => {
   return async (dispatch) => {
@@ -12,17 +12,10 @@ export const orderFilter = (orderBy, orderDirection) => {
         type: ORDER_FILTER,
         payload: {
           drivers: response.data,
-          error: null,
         },
       });
     } catch (error) {
-      dispatch({
-        type: ORDER_FILTER,
-        payload: {
-          drivers: [],
-          error: { error: "Hubo un error al obtener los conductores", message: error.message },
-        },
-      });
+      alert(error)
     }
   };
 };
@@ -59,5 +52,12 @@ export const setDelete = (boolean) => {
   return {
     type: SET_DELETE,
     payload: boolean,
+  };
+}
+
+export const setIdDelete = (id) => {
+  return {
+    type: SET_ID_DELETE,
+    payload: id,
   };
 }
