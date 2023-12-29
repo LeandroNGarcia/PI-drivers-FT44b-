@@ -27,7 +27,7 @@ const Start = ({ handleBackChange, handleDrivers }) => {
   return (
     <div className="contain">
       {loading ? (
-        <div>
+        <div role="loading">
           <Loading handleBackChange={handleBackChange} />
         </div>
       ) : (

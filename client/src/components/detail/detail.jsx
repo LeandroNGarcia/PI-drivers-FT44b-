@@ -31,6 +31,9 @@ const Detail = ({ navigate, handleBackChange }) => {
 
   const { name, lastname, birthday, nationality, description, teams, Teams, image } = driver
   const divteams = teams && teams.split(",")
+  const descriptionLength = description && description.length;
+  const text = "Nigel Ernest James Mansell, is a British retired racing driver who won both the Formula One World Championship (1992) and the CART Indy Car World Series (1993). Mansell was the reigning F1 champion when he moved over to CART, becoming the first person to win the CART title in his debut season, and making him the only person to hold both the World Drivers' Championship and the American open-wheel National Championship simultaneously. His career in Formula One spanned 15 seasons, with his final two full seasons of top-level racing being spent in the CART series. Mansell is the second most successful British Formula One driver of all time in terms of race wins with 31 victories, (behind Lewis Hamilton with 103 wins), and is eighth overall on the Formula One race winners list, behind Hamilton,"
+  console.log(text.length)
 
   return (
     <div className="contain-detail">
@@ -54,7 +57,7 @@ const Detail = ({ navigate, handleBackChange }) => {
           {!Teams ? <h4 className="serverAPI" >Api</h4> : <h4 className="serverDB" >DataBase</h4>}
         </div>
       </div>
-      <div className="fuera-carnet">
+      <div className={descriptionLength > 800 ? "fuera-carnet" : "fuera-carnet-corto"}>
       <h4>{description}</h4>
       </div>
       <button onClick={() => navigate(currentPath)} >Volver Atras</button>
