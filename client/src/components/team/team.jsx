@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Driver = ({ equipo, isActive, onMouseEnter, onMouseLeave, activeTeam, navigate }) => {
+const Team = ({ equipo, isActive, onMouseEnter, onMouseLeave, activeTeam, navigate }) => {
   const { name, id } = equipo;
 
   return (
@@ -18,4 +18,4 @@ const Driver = ({ equipo, isActive, onMouseEnter, onMouseLeave, activeTeam, navi
   )
 }
 
-export default Driver
+export default Team
